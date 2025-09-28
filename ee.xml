@@ -1,0 +1,145 @@
+            android:excludeFromRecents="true"
+            android:launchMode="singleTask"
+            android:resizeableActivity="false" />
+        <activity
+            android:name="com.byd.negativescreen.journeyreport.views.activitys.BydAutoJrTrackAgreementActivity"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTask"
+            android:resizeableActivity="false" />
+        <activity
+            android:name="com.byd.negativescreen.journeyreport.views.activitys.BydAutoJrSettingActivity"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTask"
+            android:configChanges="screenSize|orientation"
+            android:resizeableActivity="false" />
+        <activity
+            android:name="com.byd.negativescreen.journeyreport.views.activitys.BydAutoJrDetailActivity"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTask"
+            android:configChanges="uiMode"
+            android:hardwareAccelerated="true"
+            android:resizeableActivity="false" />
+        <activity
+            android:name="com.byd.negativescreen.journeyreport.views.activitys.BydAutoJrDeletionActivity"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTask"
+            android:resizeableActivity="false" />
+        <activity
+            android:theme="@style/CommonDialogActivityStyle"
+            android:name="com.byd.negativescreen.journeyreport.views.activitys.BydAutoJrMsgCodeActivity"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTask"
+            android:configChanges="screenSize|orientation"
+            android:hardwareAccelerated="true"
+            android:resizeableActivity="false" />
+        <activity
+            android:theme="@style/CommonDialogActivityStyle"
+            android:name="com.byd.negativescreen.journeyreport.views.activitys.BydAutoJrWarnDialogActivity"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTask"
+            android:configChanges="screenSize|orientation"
+            android:resizeableActivity="false" />
+        <activity
+            android:theme="@style/CommonDialogActivityStyle"
+            android:name="com.byd.negativescreen.journeyreport.views.activitys.BydAutoJrPriceDialogActivity"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTask"
+            android:configChanges="screenSize|orientation"
+            android:windowSoftInputMode="adjustResize|stateAlwaysVisible"
+            android:hardwareAccelerated="true"
+            android:resizeableActivity="false" />
+        <activity
+            android:theme="@style/CommonDialogActivityStyle"
+            android:name="com.byd.negativescreen.journeyreport.views.activitys.BydAutoJrDriveDetailDialogActivity"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTask"
+            android:configChanges="screenSize|orientation"
+            android:resizeableActivity="false" />
+        <activity
+            android:theme="@style/CommonDialogActivityStyle"
+            android:name="com.byd.negativescreen.journeyreport.views.activitys.BydAutoJrDriveDetailDialogNewActivity"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTask"
+            android:configChanges="screenSize|orientation"
+            android:resizeableActivity="false" />
+        <activity
+            android:theme="@style/CommonDialogActivityStyle"
+            android:name="com.byd.negativescreen.journeyreport.views.activitys.BydAutoJr2DriveLevelDescDialogActivity"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTask"
+            android:configChanges="screenSize|orientation"
+            android:resizeableActivity="false" />
+        <activity
+            android:name="com.byd.negativescreen.journeyreport.views.activitys.BydAutoEditRecentJourneyListActivity"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTask"
+            android:resizeableActivity="false" />
+        <activity
+            android:name="com.byd.negativescreen.journeyreport.views.activitys.BydAutoJrDetailActivityV2"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTask"
+            android:hardwareAccelerated="true"
+            android:resizeableActivity="false" />
+        <uses-library
+            android:name="com.google.android.maps"
+            android:required="false" />
+        <meta-data
+            android:name="com.amap.api.v2.apikey"
+            android:value="3212c356da163a3cc3dc7209e1019c57" />
+        <service
+            android:name="com.amap.api.location.APSService" />
+        <activity
+            android:name="com.byd.negativescreen.biz.h5.H5Activity"
+            android:excludeFromRecents="true"
+            android:configChanges="screenSize|orientation|keyboardHidden"
+            android:hardwareAccelerated="true"
+            android:resizeableActivity="false" />
+        <activity
+            android:theme="@style/Transparent"
+            android:name="com.byd.negativescreen.biz.global.GlobalDialogActivity"
+            android:excludeFromRecents="true"
+            android:resizeableActivity="false" />
+        <service
+            android:name="com.byd.negativescreen.biz.jpush.component.IntentActService"
+            android:enabled="true"
+            android:exported="true" />
+        <receiver
+            android:name="com.byd.negativescreen.biz.receiver.LoginSuccessAfterRegisterReceiver">
+            <intent-filter>
+                <action
+                    android:name="com.byd.action.car_owner_account_login" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="com.byd.negativescreen.biz.receiver.BootCompletedToHomeReceiver">
+            <intent-filter>
+                <action
+                    android:name="android.intent.action.BOOT_BUSINESS_CHANGE" />
+                <action
+                    android:name="android.intent.action.BOOT_COMPLETED" />
+                <action
+                    android:name="android.intent.action.REBOOT" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="com.byd.negativescreen.biz.receiver.NetAvailableReceiver">
+            <intent-filter>
+                <action
+                    android:name="android.net.conn.CONNECTIVITY_CHANGE_FUNCTION" />
+            </intent-filter>
+        </receiver>
+        <provider
+            android:name="com.byd.negativescreen.biz.provider.hepler.DatabaseManager"
+            android:exported="true"
+            android:authorities="com.byd.negativescreen.biz.provider.hepler.DatabaseManager" />
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:exported="false"
+            android:authorities="com.byd.negativescreen.fileprovider"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+    </application>
+</manifest>
