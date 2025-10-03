@@ -1,207 +1,688 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- This is a modified version of AXMLPrinter2(By Google) library. Check out how many changes are made at https://github.com/developer-krushna/AXMLPrinter by (@developer-krushna) -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    android:sharedUserId="android.uid.system"
-    android:versionCode="400009"
-    android:versionName="0.4.0.9.2503182222.9f1297f"
+    android:versionCode="137"
+    android:versionName="V3.5.137.250707.12.26"
     android:compileSdkVersion="30"
     android:compileSdkVersionCodename="11"
-    package="com.android.launcher3"
-    platformBuildVersionCode="30"
+    package="com.byd.negativescreen"
+    platformBuildVersionCode="30"
     platformBuildVersionName="11">
     <uses-sdk
-        android:minSdkVersion="29"
-        android:targetSdkVersion="30" />
-    <permission
-        android:label="@string/permlab_install_shortcut"
-        android:name="com.android.launcher.permission.INSTALL_SHORTCUT"
-        android:protectionLevel="dangerous"
-        android:permissionGroup="android.permission-group.SYSTEM_TOOLS"
-        android:description="@string/permdesc_install_shortcut" />
-    <permission
-        android:label="@string/permlab_read_settings"
-        android:name="com.android.launcher3.permission.READ_SETTINGS"
-        android:protectionLevel="normal"
-        android:permissionGroup="android.permission-group.SYSTEM_TOOLS"
-        android:description="@string/permdesc_read_settings" />
-    <permission
-        android:label="@string/permlab_write_settings"
-        android:name="com.android.launcher3.permission.WRITE_SETTINGS"
-        android:protectionLevel="signatureOrSystem"
-        android:permissionGroup="android.permission-group.SYSTEM_TOOLS"
-        android:description="@string/permdesc_write_settings" />
-    <permission
-        android:name="com.android.launcher3.permission.RECEIVE_LAUNCH_BROADCASTS"
-        android:protectionLevel="signature" />
-    <permission
-        android:name="com.android.launcher3.permission.RECEIVE_FIRST_LOAD_BROADCAST"
-        android:protectionLevel="signatureOrSystem" />
-    <protected-broadcast
-        android:name="com.android.launcher.action.UNREAD_RESET" />
-    <protected-broadcast
-        android:name="byd.intent.action.SILENT_INSTALL_FINISH_TRANSMIT" />
-    <protected-broadcast
-        android:name="com.byd.updatewidgets" />
-    <protected-broadcast
-        android:name="com.android.launcher.action.APPWIDGET_DEFAULT_WORKSPACE_CONFIGURE" />
-    <!-- ⚠️ Make phone calls -->
-    <uses-permission android:name="android.permission.CALL_PHONE" />
-    <!-- Set wallpaper -->
-    <uses-permission android:name="android.permission.SET_WALLPAPER" />
-    <!-- Adjust your wallpaper size -->
-    <uses-permission android:name="android.permission.SET_WALLPAPER_HINTS" />
-    <!-- Control vibration -->
-    <uses-permission android:name="android.permission.VIBRATE" />
-    <!-- Allows an application to tell the AppWidget service to access apps's widget data. Very few apps use this permission. -->
-    <uses-permission android:name="android.permission.BIND_APPWIDGET" />
-    <!-- Send sticky broadcasts -->
-    <uses-permission android:name="android.permission.BROADCAST_STICKY" />
-    <!-- Boot startup -->
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-    <!-- Allows an application to read the preferences and configuration settings of the home screen launcher on an Android device. -->
-    <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS" />
-    <uses-permission android:name="com.android.launcher.permission.WRITE_SETTINGS" />
-    <uses-permission android:name="com.android.launcher3.permission.READ_SETTINGS" />
-    <uses-permission android:name="com.android.launcher3.permission.WRITE_SETTINGS" />
-    <uses-permission android:name="com.android.launcher3.permission.RECEIVE_LAUNCH_BROADCASTS" />
-    <uses-permission android:name="com.android.launcher3.permission.RECEIVE_FIRST_LOAD_BROADCAST" />
-    <!-- ⚠️ Sets preferred applications. -->
-    <uses-permission android:name="android.permission.SET_PREFERRED_APPLICATIONS" />
-    <!-- Allows apps to forcibly stop other apps. -->
-    <uses-permission android:name="android.permission.FORCE_STOP_PACKAGES" />
-    <!-- Open, close, or disable the status bar and its icons -->
-    <uses-permission android:name="android.permission.STATUS_BAR" />
-    <!-- Modify system settings -->
-    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
-    <uses-permission android:name="com.byd.SilentInstaller.FINISH_PERMISSION" />
-    <uses-permission android:name="com.byd.permission.carsettings.WRITE_CARSETTINGS_PROVIDER" />
-    <uses-permission android:name="com.byd.permission.carsettings.READ_CARSETTINGS_PROVIDER" />
+        android:minSdkVersion="25"
+        android:targetSdkVersion="29" />
+    <uses-permission android:name="android.permission.BYDAUTO_INSTRUMENT_COMMON" />
+    <!-- View network connections -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!-- Allows the app to retrieve a list of real tasks (processes and activities), including background tasks. -->
+    <uses-permission android:name="android.permission.REAL_GET_TASKS" />
+    <!-- Have full internet access -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- Change network connectivity status -->
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <!-- Access Wi-Fi network state information -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <!-- Connect to or disconnect from Wi-Fi -->
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <!-- Mount and unmount file systems on removable storage -->
     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
-    <!-- Modify or delete the contents of your shared storage space -->
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <!-- Read the contents of your shared storage space -->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="com.byd.otaupdate.permission.VEHICLE_OTA_UPDATE" />
-    <meta-data
-        android:name="android.support.VERSION"
-        android:value="25.3.1" />
+    <!-- Modify or delete the contents of your shared storage space -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <!-- Read contact data -->
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <!-- Modify your contacts -->
+    <uses-permission android:name="android.permission.WRITE_CONTACTS" />
+    <!-- ⚠️ Make phone calls -->
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <!-- ⚠️ Read phone status and identity -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <!-- Boot startup -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.BYDAUTO_BODYWORK_COMMON" />
+    <uses-permission android:name="android.permission.BYDAUTO_BODYWORK_GET" />
+    <uses-permission android:name="android.permission.BYDAUTO_SPEED_COMMON" />
+    <uses-permission android:name="android.permission.BYDAUTO_SPEED_GET" />
+    <uses-permission android:name="android.permission.BYDAUTO_AC_COMMON" />
+    <uses-permission android:name="android.permission.BYDAUTO_AC_GET" />
+    <uses-permission android:name="android.permission.BYDAUTO_SAFETY_BELT_COMMON" />
+    <uses-permission android:name="android.permission.BYDAUTO_SAFETY_BELT_GET" />
+    <uses-permission android:name="android.permission.BYDAUTO_STATISTIC_COMMON" />
+    <uses-permission android:name="android.permission.BYDAUTO_STATISTIC_GET" />
+    <uses-permission android:name="android.permission.BYDAUTO_GEARBOX_COMMON" />
+    <uses-permission android:name="android.permission.BYDAUTO_GEARBOX_GET" />
+    <uses-permission android:name="android.permission.BYDAUTO_CHARGING_COMMON" />
+    <uses-permission android:name="android.permission.BYDAUTO_CHARGING_GET" />
+    <uses-permission android:name="android.permission.BYDAUTO_ENERGY_COMMON" />
+    <uses-permission android:name="android.permission.BYDAUTO_ENERGY_GET" />
+    <!-- Record audio -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <!-- ⚠️ Take pictures or videos -->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <!-- Request installation of packages. -->
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+    <uses-feature
+        android:name="android.hardware.camera" />
+    <!-- Retrieve information about currently running apps -->
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <!-- Allows an application to access approximate location (network-based). -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <!-- Access precise location -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.NETWORK_SETTINGS" />
+    <!-- Modify system settings -->
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.BYDAUTO_LIGHT_COMMON" />
+    <uses-permission android:name="android.permission.BYDAUTO_LIGHT_GET" />
+    <uses-permission android:name="android.permission.BYDAUTO_SECURITY_GET" />
+    <uses-permission android:name="android.permission.BYDAUTO_RESCUE_GET" />
+    <uses-permission android:name="android.permission.BYDAUTO_VERSION_GET" />
+    <uses-permission android:name="android.permission.START_XCALL" />
+    <uses-permission android:name="android.permission.BYDAUTO_INSTRUMENT_GET" />
+    <uses-permission android:name="android.permission.BYDAUTO_INSTRUMENT_SET" />
+    <uses-permission android:name="android.permission.BYDAUTO_PANORAMA_COMMON" />
+    <uses-permission android:name="android.permission.BYDAUTO_PANORAMA_GET" />
+    <uses-permission android:name="android.permission.BYDAUTO_AUDIO_GET" />
+    <uses-permission android:name="android.permission.BYDAUTO_SETTING_COMMON" />
+    <uses-permission android:name="android.permission.BYDAUTO_SETTING_GET" />
+    <uses-permission android:name="android.permission.BYDAUTO_SENSOR_COMMON" />
+    <uses-permission android:name="android.permission.BYDAUTO_SENSOR_GET" />
+    <uses-permission android:name="android.permission.BYDAUTO_ADAS_COMMON" />
+    <uses-permission android:name="android.permission.BYDAUTO_ADAS_GET" />
+    <uses-permission android:name="android.permission.MANAGE_SENSOR_PRIVACY" />
+    <uses-permission android:name="android.permission.OBSERVE_SENSOR_PRIVACY" />
+    <!-- Read low-level system log files -->
+    <uses-permission android:name="android.permission.READ_LOGS" />
+    <!-- Pair with Bluetooth devices -->
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <!-- Access extra location provider commands -->
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+    <!-- Allows an application to access location in the background (Android 10+). -->
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+    <!-- Find accounts on the device -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <!-- Reroute outgoing calls -->
+    <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS" />
+    <!-- Allows the app to launch tasks from the recent tasks list, enabling shortcuts or task management features. -->
+    <uses-permission android:name="android.permission.START_TASKS_FROM_RECENTS" />
+    <uses-permission android:name="android.permission.STOP_APP_SWITCHES" />
+    <uses-permission android:name="android.permission.BOOT_BUSINESS" />
+    <uses-permission android:name="com.byd.permission.ACCOUNT_SERVICE_LINK" />
+    <!-- Call killBackgroundProcesses(String) to terminate background processes -->
+    <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES" />
+    <!-- ⚠️ Allows privileged read access to phone state. -->
+    <uses-permission android:name="android.permission.READ_PRIVILEGED_PHONE_STATE" />
+    <!-- Install packages -->
+    <uses-permission android:name="android.permission.INSTALL_PACKAGES" />
+    <uses-permission android:name="android.permission.INTERACT_ACROSS_USERS_FULL" />
+    <!-- Allows apps to forcibly stop other apps. -->
+    <uses-permission android:name="android.permission.FORCE_STOP_PACKAGES" />
+    <uses-permission android:name="com.byd.permission.carsettings.READ_CARSETTINGS_PROVIDER" />
+    <uses-permission android:name="com.byd.permission.carsettings.WRITE_CARSETTINGS_PROVIDER" />
+    <uses-permission android:name="com.byd.permission.carstatus.READ_PROVIDER" />
+    <uses-permission android:name="com.byd.permission.carstatus.WRITE_PROVIDER" />
     <application
-        android:label="@string/application_name"
-        android:icon="@mipmap/ic_flat_launcher"
-        android:name="com.android.launcher3.LauncherApplication"
-        android:allowBackup="@bool/enable_backup"
-        android:restoreAnyVersion="true"
-        android:hardwareAccelerated="true"
-        android:largeHeap="@7f030008"
-        android:supportsRtl="@bool/config_allow_rtl"
-        android:extractNativeLibs="false">
-        <activity
-            android:theme="@style/LauncherTheme"
-            android:name="com.android.launcher3.Launcher"
-            android:enabled="true"
-            android:taskAffinity=""
-            android:clearTaskOnLaunch="true"
-            android:stateNotNeeded="true"
-            android:launchMode="singleTask"
-            android:configChanges="uiMode|keyboardHidden|keyboard|mnc|mcc"
-            android:windowSoftInputMode="adjustPan"
-            android:resumeWhilePausing="true">
-            <intent-filter>
-                <action
-                    android:name="android.intent.action.MAIN" />
-                <category
-                    android:name="android.intent.category.HOME" />
-                <category
-                    android:name="android.intent.category.HOME_ONLY" />
-                <category
-                    android:name="android.intent.category.DEFAULT" />
-                <category
-                    android:name="android.intent.category.MONKEY" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:label="@string/toggle_weight_watcher"
-            android:icon="@7f0b0001"
-            android:name="com.android.launcher3.ToggleWeightWatcher"
-            android:enabled="@bool/debug_memory_enabled">
-            <intent-filter>
-                <action
-                    android:name="android.intent.action.MAIN" />
-                <category
-                    android:name="android.intent.category.DEFAULT" />
-                <category
-                    android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:label="@string/settings_button_text"
-            android:name="com.android.launcher3.SettingsActivity"
-            android:process=":settings_process"
-            android:autoRemoveFromRecents="true" />
-        <activity
+        android:theme="@style/BaseDayNightTheme"
+        android:label="@string/app_name"
+        android:icon="@mipmap/ic_launcher"
+        android:name="com.byd.negativescreen.app.NegScreenApp4"
+        android:allowBackup="true"
+        android:hardwareAccelerated="false"
+        android:largeHeap="true"
+        android:supportsRtl="true"
+        android:extractNativeLibs="false"
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:appComponentFactory="androidx.core.app.CoreComponentFactory">
+        <activity
             android:theme="@android:style/Theme.Translucent.NoTitleBar"
-            android:name="com.android.launcher3.MainActivity">
+            android:name="com.byd.negativescreen.app.SplashActivity1"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTop"
+            android:configChanges="screenSize|orientation"
+            android:resizeableActivity="false" />
+        <service
+            android:name="com.byd.negativescreen.app.NegScreenService4"
+            android:enabled="true"
+            android:exported="true">
             <intent-filter>
                 <action
-                    android:name="com.android.launcher3.MainActivity" />
+                    android:name="com.android.launcher3.WINDOW_OVERLAY" />
             </intent-filter>
-        </activity>
+        </service>
         <activity
-            android:theme="@android:style/Theme.NoDisplay"
-            android:label="@string/debug_memory_activity"
-            android:icon="@7f0b0001"
-            android:name="com.android.launcher3.MemoryDumpActivity"
-            android:enabled="@bool/debug_memory_enabled"
-            android:excludeFromRecents="true">
+            android:name="com.byd.negativescreen.main.MainActivity">
             <intent-filter>
                 <action
                     android:name="android.intent.action.MAIN" />
-                <category
-                    android:name="android.intent.category.DEFAULT" />
-                <category
-                    android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="com.byd.negativescreen.account.view.LoginActivity"
+            android:exported="true"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTask"
+            android:configChanges="layoutDirection|screenSize|uiMode|orientation|keyboard|locale"
+            android:resizeableActivity="false">
+            <intent-filter>
+                <action
+                    android:name="com.byd.negative.login" />
+                <category
+                    android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:theme="@style/CommonDialogActivityStyle"
+            android:name="com.byd.negativescreen.account.view.AccountDialogActivity"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTask"
+            android:resizeableActivity="false" />
+        <activity
+            android:theme="@style/Transparent"
+            android:name="com.byd.negativescreen.account.view.LogoutTransitionActivity"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTask"
+            android:resizeableActivity="false" />
+        <activity
+            android:name="com.byd.negativescreen.appdirect.view.AppEditActivity"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTask"
+            android:resizeableActivity="false" />
+        <activity
+            android:name="com.byd.negativescreen.drivebehavior.views.activity.BehaviorMainActivity"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTask"
+            android:resizeableActivity="false" />
+        <activity
+            android:name="com.byd.negativescreen.drivebehavior.views.activity.SettingActivity"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTask"
+            android:resizeableActivity="false" />
+        <activity
+            android:name="com.byd.negativescreen.drivebehavior.views.activity.JourneyDetailActivity"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTask"
+            android:hardwareAccelerated="true"
+            android:resizeableActivity="false" />
+        <activity
+            android:name="com.byd.negativescreen.drivebehavior.views.activity.RatingDetailActivity"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTask"
+            android:resizeableActivity="false" />
+        <activity
+            android:name="com.byd.negativescreen.drivebehavior.views.activity.DriveScoreRankActivity"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTask"
+            android:resizeableActivity="false" />
+        <activity
+            android:name="com.byd.negativescreen.drivebehavior.views.activity.HighestAchieveRankActivity"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTask"
+            android:resizeableActivity="false" />
+        <activity
+            android:name="com.byd.negativescreen.drivebehavior.views.activity.BehaviorTipsActivity"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTask"
+            android:resizeableActivity="false" />
+        <activity
+            android:theme="@style/CommonDialogActivityStyle"
+            android:name="com.byd.negativescreen.drivebehavior.views.activity.AchieveLevelDialogActivity"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTask"
+            android:configChanges="screenSize|orientation"
+            android:resizeableActivity="false" />
+        <activity
+            android:theme="@style/CommonDialogActivityStyle"
+            android:name="com.byd.negativescreen.drivebehavior.views.activity.RatingRuleDialogActivity"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTask"
+            android:configChanges="screenSize|orientation"
+            android:resizeableActivity="false" />
+        <activity
+            android:name="com.byd.negativescreen.feedback.view.activity.FeedBackActivity"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTask"
+            android:hardwareAccelerated="true"
+            android:resizeableActivity="false">
+            <intent-filter>
+                <action
+                    android:name="com.byd.negativescreen.feedback_action" />
+                <category
+                    android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.byd.negativescreen.feedback.view.activity.FeedbackHistoryActivity"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTask"
+            android:resizeableActivity="false" />
+        <activity
+            android:name="com.byd.negativescreen.feedback.view.activity.FeedbackDetailsActivity"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTask"
+            android:resizeableActivity="false" />
+        <activity
+            android:name="com.byd.negativescreen.feedback.view.activity.PictureActivity"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTask"
+            android:resizeableActivity="false" />
+        <activity
+            android:name="com.byd.negativescreen.feedback.view.activity.FeedBackAddActivity"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTask"
+            android:hardwareAccelerated="true"
+            android:resizeableActivity="false" />
+        <activity
+            android:name="com.byd.negativescreen.feedback.view.activity.PictureGalleryActivity"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTask"
+            android:resizeableActivity="false" />
+        <activity
+            android:name="com.byd.negativescreen.feedback.view.activity.ContactWayActivity"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTask"
+            android:resizeableActivity="false" />
+        <activity
+            android:name="com.byd.negativescreen.search.view.SearchActivity"
+            android:exported="true"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTask"
+            android:windowSoftInputMode="adjustPan|stateHidden"
+            android:resizeableActivity="false" />
+        <receiver
+            android:name="com.byd.negativescreen.biz.search.bluetooth.BluetoothReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action
+                    android:name="android.bluetooth.device.action.ACL_CONNECTED" />
+                <action
+                    android:name="android.bluetooth.device.action.ACL_DISCONNECTED" />
+                <action
+                    android:name="android.bluetooth.adapter.action.STATE_CHANGED" />
+                <action
+                    android:name="android.bluetooth.BluetoothAdapter.STATE_OFF" />
+                <action
+                    android:name="android.bluetooth.BluetoothAdapter.STATE_ON" />
+                <action
+                    android:name="com.byd.action.PBAP_DOWNLOAD_DONE_ACTION" />
+            </intent-filter>
+        </receiver>
+        <activity
+            android:name="com.byd.negativescreen.smartsteward.view.activity.SmartstewardActivity"
+            android:launchMode="singleTask"
+            android:configChanges="uiMode"
+            android:resizeableActivity="false" />
+        <activity
+            android:name="com.byd.negativescreen.smartsteward.view.activity.BuyFlowProtocolActivity"
+            android:resizeableActivity="false" />
+        <activity
+            android:name="com.byd.negativescreen.smartsteward.view.activity.RenewForOwnActivity"
+            android:resizeableActivity="false" />
+        <activity
+            android:name="com.byd.negativescreen.smartsteward.view.activity.RenewForOtherActivity"
+            android:resizeableActivity="false" />
+        <activity
+            android:name="com.byd.negativescreen.smartsteward.view.activity.PayPageActivity"
+            android:resizeableActivity="false" />
+        <activity
+            android:name="com.byd.negativescreen.usercenter.view.activity.UserActivity"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTask"
+            android:resizeableActivity="false" />
+        <activity
+            android:name="com.byd.negativescreen.usercenter.view.activity.UserMsgActivity"
+            android:exported="true"
+            android:excludeFromRecents="true"
+            android:resizeableActivity="false">
+            <intent-filter>
+                <action
+                    android:name="com.byd.negative.usermsg" />
+                <category
+                    android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.byd.negativescreen.usercenter.view.activity.AlbumActivity"
+            android:excludeFromRecents="true"
+            android:resizeableActivity="false" />
+        <activity
+            android:name="com.byd.negativescreen.usercenter.view.activity.ClipImageActivity"
+            android:excludeFromRecents="true"
+            android:resizeableActivity="false" />
+        <activity
+            android:name="com.byd.photolib.crop.CropImageActivity"
+            android:excludeFromRecents="true"
+            android:resizeableActivity="false" />
+        <activity
+            android:name="com.byd.negativescreen.usercenter.view.activity.CropImgActivity"
+            android:excludeFromRecents="true"
+            android:resizeableActivity="false" />
+        <activity
+            android:name="com.byd.negativescreen.usercenter.view.activity.UserEditAvatarActivity"
+            android:excludeFromRecents="true"
+            android:resizeableActivity="false" />
+        <activity
+            android:name="com.byd.negativescreen.usercenter.view.activity.AutoMsgActivity"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTask"
+            android:resizeableActivity="false" />
+        <activity
+            android:name="com.byd.negativescreen.usercenter.view.activity.AutoPlateActivity"
+            android:excludeFromRecents="true"
+            android:resizeableActivity="false" />
+        <activity
+            android:name="com.byd.negativescreen.usercenter.view.activity.SmartEnvActivity"
+            android:excludeFromRecents="true"
+            android:resizeableActivity="false" />
+        <activity
+            android:name="com.byd.negativescreen.usercenter.view.activity.HelpActivity"
+            android:excludeFromRecents="true"
+            android:hardwareAccelerated="true"
+            android:resizeableActivity="false" />
+        <activity
+            android:name="com.byd.negativescreen.usercenter.view.activity.UpdateActivity"
+            android:excludeFromRecents="true"
+            android:resizeableActivity="false" />
+        <activity
+            android:name="com.byd.negativescreen.usercenter.view.activity.AboutActivity"
+            android:excludeFromRecents="true"
+            android:resizeableActivity="false" />
+        <activity
+            android:name="com.byd.negativescreen.usercenter.view.activity.ProtocolActivity"
+            android:excludeFromRecents="true"
+            android:resizeableActivity="false" />
+        <activity
+            android:name="com.byd.negativescreen.usercenter.view.activity.MsgActivity"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTask"
+            android:resizeableActivity="false" />
+        <activity
+            android:name="com.byd.negativescreen.usercenter.view.activity.MsgDetailActivity"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTask"
+            android:configChanges="screenSize|orientation|keyboardHidden"
+            android:hardwareAccelerated="true"
+            android:resizeableActivity="false" />
+        <activity
+            android:name="com.byd.negativescreen.usercenter.view.activity.DeviceInfoActivity"
+            android:excludeFromRecents="true"
+            android:configChanges="screenSize|orientation|keyboardHidden"
+            android:resizeableActivity="false" />
+        <activity
+            android:name="com.byd.negativescreen.carhealth.health.views.CarHealthActivity"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTask"
+            android:resizeableActivity="false">
+            <intent-filter>
+                <action
+                    android:name="com.byd.negativescreen.carhealth_action" />
+                <category
+                    android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.byd.negativescreen.carhealth.servicebooking.views.ServiceRecordActivity"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTask"
+            android:hardwareAccelerated="true"
+            android:resizeableActivity="false" />
+        <activity
+            android:name="com.byd.negativescreen.carhealth.servicebooking.views.ServiceStoreActivity"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTask"
+            android:resizeableActivity="false" />
+        <activity
+            android:name="com.byd.negativescreen.carhealth.servicebooking.views.StoreMapActivity"
+            android:excludeFromRecents="true"
+            android:resizeableActivity="false" />
+        <activity
+            android:name="com.byd.negativescreen.carhealth.servicebooking.views.BookingDetailActivity"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTask"
+            android:resizeableActivity="false" />
+        <activity
+            android:name="com.byd.negativescreen.carhealth.servicebooking.views.BookingTimeActivity"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTask"
+            android:resizeableActivity="false" />
+        <activity
+            android:name="com.byd.negativescreen.carhealth.servicebooking.views.CreateBookingActivity"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTask"
+            android:windowSoftInputMode="adjustPan|stateVisible"
+            android:hardwareAccelerated="true"
+            android:resizeableActivity="false" />
+        <activity
+            android:name="com.byd.negativescreen.carhealth.health.views.dilink.NewCarHealthActivity"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTask"
+            android:resizeableActivity="false">
+            <intent-filter>
+                <action
+                    android:name="com.byd.negativescreen.carhealth_action" />
+                <category
+                    android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.byd.negativescreen.carhealth.servicebooking.views.dilink.NewServiceStoreActivity"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTask"
+            android:resizeableActivity="false" />
+        <activity
+            android:name="com.byd.negativescreen.carhealth.servicebooking.views.dilink.NewStoreMapActivity"
+            android:excludeFromRecents="true"
+            android:resizeableActivity="false" />
+        <activity
+            android:name="com.byd.negativescreen.carhealth.servicebooking.views.dilink.NewBookingDetailActivity"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTask"
+            android:resizeableActivity="false" />
+        <activity
+            android:name="com.byd.negativescreen.carhealth.servicebooking.views.dilink.NewBookingTimeActivity"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTask"
+            android:resizeableActivity="false" />
+        <activity
+            android:name="com.byd.negativescreen.carhealth.servicebooking.views.dilink.NewCreateBookingActivity"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTask"
+            android:windowSoftInputMode="adjustPan|stateVisible"
+            android:hardwareAccelerated="true"
+            android:resizeableActivity="false" />
+        <activity
+            android:name="com.byd.negativescreen.carhealth.insurance.views.InsuranceClaimActivity"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTask"
+            android:resizeableActivity="false" />
+        <activity
+            android:theme="@style/InsuranceClaimDialogActivityStyle"
+            android:name="com.byd.negativescreen.carhealth.insurance.views.InsuranceClaimDialogActivity"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTask"
+            android:resizeableActivity="false" />
         <service
-            android:name="com.android.launcher3.MemoryTracker"
-            android:enabled="@bool/debug_memory_enabled" />
+            android:name="com.byd.negativescreen.carhealth.health.binderpool.CarHealthBinderPoolService"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action
+                    android:name="com.byd.negativescreen.carhealth_action" />
+                <category
+                    android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </service>
         <service
-            android:name="com.android.launcher3.service.LauncherWakeUpService"
+            android:name="com.byd.negativescreen.voice.NegScreenPhoneticService"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action
+                    android:name="com.byd.negativescreen.remote_action" />
+                <category
+                    android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </service>
+        <activity
+            android:name="com.byd.negativescreen.journeyreport.views.activitys.BydAutoJourneyReportTestActivity"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTask"
+            android:resizeableActivity="false" />
+        <activity
+            android:name="com.byd.negativescreen.journeyreport.views.activitys.BydAutoJourneyReportActivity"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTask"
+            android:resizeableActivity="false" />
+        <activity
+            android:name="com.byd.negativescreen.journeyreport.views.activitys.BydAutoJourneyReportNewActivity"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTask"
+            android:resizeableActivity="false" />
+        <activity
+            android:name="com.byd.negativescreen.journeyreport.views.activitys.BydAutoJrTipsActivity"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTask"
+            android:resizeableActivity="false" />
+        <activity
+            android:name="com.byd.negativescreen.journeyreport.views.activitys.BydAutoJrTrackAgreementActivity"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTask"
+            android:resizeableActivity="false" />
+        <activity
+            android:name="com.byd.negativescreen.journeyreport.views.activitys.BydAutoJrSettingActivity"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTask"
+            android:configChanges="screenSize|orientation"
+            android:resizeableActivity="false" />
+        <activity
+            android:name="com.byd.negativescreen.journeyreport.views.activitys.BydAutoJrDetailActivity"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTask"
+            android:configChanges="uiMode"
+            android:hardwareAccelerated="true"
+            android:resizeableActivity="false" />
+        <activity
+            android:name="com.byd.negativescreen.journeyreport.views.activitys.BydAutoJrDeletionActivity"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTask"
+            android:resizeableActivity="false" />
+        <activity
+            android:theme="@style/CommonDialogActivityStyle"
+            android:name="com.byd.negativescreen.journeyreport.views.activitys.BydAutoJrMsgCodeActivity"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTask"
+            android:configChanges="screenSize|orientation"
+            android:hardwareAccelerated="true"
+            android:resizeableActivity="false" />
+        <activity
+            android:theme="@style/CommonDialogActivityStyle"
+            android:name="com.byd.negativescreen.journeyreport.views.activitys.BydAutoJrWarnDialogActivity"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTask"
+            android:configChanges="screenSize|orientation"
+            android:resizeableActivity="false" />
+        <activity
+            android:theme="@style/CommonDialogActivityStyle"
+            android:name="com.byd.negativescreen.journeyreport.views.activitys.BydAutoJrPriceDialogActivity"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTask"
+            android:configChanges="screenSize|orientation"
+            android:windowSoftInputMode="adjustResize|stateAlwaysVisible"
+            android:hardwareAccelerated="true"
+            android:resizeableActivity="false" />
+        <activity
+            android:theme="@style/CommonDialogActivityStyle"
+            android:name="com.byd.negativescreen.journeyreport.views.activitys.BydAutoJrDriveDetailDialogActivity"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTask"
+            android:configChanges="screenSize|orientation"
+            android:resizeableActivity="false" />
+        <activity
+            android:theme="@style/CommonDialogActivityStyle"
+            android:name="com.byd.negativescreen.journeyreport.views.activitys.BydAutoJrDriveDetailDialogNewActivity"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTask"
+            android:configChanges="screenSize|orientation"
+            android:resizeableActivity="false" />
+        <activity
+            android:theme="@style/CommonDialogActivityStyle"
+            android:name="com.byd.negativescreen.journeyreport.views.activitys.BydAutoJr2DriveLevelDescDialogActivity"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTask"
+            android:configChanges="screenSize|orientation"
+            android:resizeableActivity="false" />
+        <activity
+            android:name="com.byd.negativescreen.journeyreport.views.activitys.BydAutoEditRecentJourneyListActivity"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTask"
+            android:resizeableActivity="false" />
+        <activity
+            android:name="com.byd.negativescreen.journeyreport.views.activitys.BydAutoJrDetailActivityV2"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTask"
+            android:hardwareAccelerated="true"
+            android:resizeableActivity="false" />
+        <uses-library
+            android:name="com.google.android.maps"
+            android:required="false" />
+        <meta-data
+            android:name="com.amap.api.v2.apikey"
+            android:value="3212c356da163a3cc3dc7209e1019c57" />
+        <service
+            android:name="com.amap.api.location.APSService" />
+        <activity
+            android:name="com.byd.negativescreen.biz.h5.H5Activity"
+            android:excludeFromRecents="true"
+            android:configChanges="screenSize|orientation|keyboardHidden"
+            android:hardwareAccelerated="true"
+            android:resizeableActivity="false" />
+        <activity
+            android:theme="@style/Transparent"
+            android:name="com.byd.negativescreen.biz.global.GlobalDialogActivity"
+            android:excludeFromRecents="true"
+            android:resizeableActivity="false" />
+        <service
+            android:name="com.byd.negativescreen.biz.jpush.component.IntentActService"
+            android:enabled="true"
             android:exported="true" />
         <receiver
-            android:name="com.android.launcher3.InstallShortcutReceiver"
-            android:permission="com.android.launcher.permission.INSTALL_SHORTCUT">
+            android:name="com.byd.negativescreen.biz.receiver.LoginSuccessAfterRegisterReceiver">
             <intent-filter>
                 <action
-                    android:name="com.android.launcher.action.INSTALL_SHORTCUT" />
+                    android:name="com.byd.action.car_owner_account_login" />
             </intent-filter>
         </receiver>
         <receiver
-            android:name="com.android.launcher3.AppWidgetsRestoredReceiver">
+            android:name="com.byd.negativescreen.biz.receiver.BootCompletedToHomeReceiver">
             <intent-filter>
                 <action
-                    android:name="android.appwidget.action.APPWIDGET_HOST_RESTORED" />
+                    android:name="android.intent.action.BOOT_BUSINESS_CHANGE" />
+                <action
+                    android:name="android.intent.action.BOOT_COMPLETED" />
+                <action
+                    android:name="android.intent.action.REBOOT" />
             </intent-filter>
         </receiver>
         <receiver
-            android:name="com.android.launcher3.StartupReceiver" />
-        <receiver
-            android:name="com.android.launcher3.SilentInstallReceiver"
-            android:permission="com.byd.SilentInstaller.FINISH_PERMISSION">
+            android:name="com.byd.negativescreen.biz.receiver.NetAvailableReceiver">
             <intent-filter>
                 <action
-                    android:name="byd.intent.action.SILENT_INSTALL_FINISH" />
+                    android:name="android.net.conn.CONNECTIVITY_CHANGE_FUNCTION" />
             </intent-filter>
         </receiver>
         <provider
-            android:name="com.android.launcher3.LauncherProvider"
-            android:readPermission="com.android.launcher3.permission.READ_SETTINGS"
-            android:writePermission="com.android.launcher3.permission.WRITE_SETTINGS"
+            android:name="com.byd.negativescreen.biz.provider.hepler.DatabaseManager"
             android:exported="true"
-            android:authorities="com.android.launcher3.settings" />
-        <meta-data
-            android:name="android.nfc.disable_beam_default"
-            android:value="true" />
+            android:authorities="com.byd.negativescreen.biz.provider.hepler.DatabaseManager" />
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:exported="false"
+            android:authorities="com.byd.negativescreen.fileprovider"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
     </application>
 </manifest>
