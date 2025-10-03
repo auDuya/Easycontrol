@@ -2,12 +2,12 @@
 <!-- This is a modified version of AXMLPrinter2(By Google) library. Check out how many changes are made at https://github.com/developer-krushna/AXMLPrinter by (@developer-krushna) -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     android:sharedUserId="android.uid.system"
-    android:versionCode="10401054"
-    android:versionName="1.4.1.54.2503181100.8698d0d"
+    android:versionCode="10401209"
+    android:versionName="1.4.1.209.2503171939.1900f1b"
     android:compileSdkVersion="29"
     android:compileSdkVersionCodename="10"
     coreApp="true"
-    package="com.byd.systemsettings"
+    package="com.byd.carsettings"
     platformBuildVersionCode="29"
     platformBuildVersionName="10">
     <uses-sdk
@@ -15,55 +15,432 @@
         android:targetSdkVersion="29" />
     <!-- Access Wi-Fi network state information -->
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <!-- Connect to or disconnect from Wi-Fi -->
-    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <!-- View network connections -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <!-- Change network connectivity status -->
-    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
-    <!-- Allows to override Wi-Fi configuration. -->
-    <uses-permission android:name="android.permission.OVERRIDE_WIFI_CONFIG" />
-    <!-- ⚠️ Read phone status and identity -->
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <uses-permission android:name="android.permission.NETWORK_SETTINGS" />
-    <uses-permission android:name="Manifest.permission.MANAGE_SENSOR_PRIVACY" />
-    <uses-permission android:name="Manifest.permission.OBSERVE_SENSOR_PRIVACY" />
+    <!-- Pair with Bluetooth devices -->
+    <uses-permission android:name="android.permission.BLUETOOTH" />
     <application
-        android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
+        android:theme="@style/common_theme_style"
         android:label="@string/app_name"
         android:icon="@mipmap/ic_launcher"
-        android:name="com.byd.systemsettings.SystemSettingsApplication"
-        android:allowBackup="false"
+        android:name="com.byd.carsettings.CarSettingsApplication"
+        android:allowBackup="true"
         android:supportsRtl="true"
         android:extractNativeLibs="false"
         android:resizeableActivity="false"
-        android:directBootAware="true"
-        android:roundIcon="@mipmap/ic_launcher_round"
         android:appComponentFactory="androidx.core.app.CoreComponentFactory">
         <activity
-            android:name="com.byd.systemsettings.MainActivity" />
-        <activity
-            android:theme="@style/CommonDialogStyle"
-            android:label="@string/wifi_settings"
-            android:name="com.byd.systemsettings.wifi.WIFISettings"
-            android:launchMode="singleInstance"
+            android:name="com.byd.carsettings.MainActivity"
+            android:launchMode="singleTask"
+            android:configChanges="uiMode"
             android:windowSoftInputMode="adjustPan|stateHidden">
             <intent-filter>
                 <action
-                    android:name="android.settings.WIFI_SETTINGS" />
+                    android:name="android.intent.action.MAIN" />
                 <action
-                    android:name="android.intent.action.WIFI_SETTINGS" />
+                    android:name="byd.intent.action.acsettings" />
                 <action
-                    android:name="android.settings.WIRELESS_SETTINGS" />
+                    android:name="byd.intent.action.startsettings" />
+                <action
+                    android:name="android.intent.action.BYD_VEHICLE_HEALTH" />
+                <action
+                    android:name="android.intent.action.BYD_VEHICLE_HEALTH_REPAIR" />
+                <action
+                    android:name="android.intent.action.BYD_MAINTENANCE" />
+                <action
+                    android:name="android.intent.action.BYD_MAINTENANCE_TIME" />
+                <action
+                    android:name="android.intent.action.BYD_MAINTENANCE_MILE" />
+                <action
+                    android:name="android.intent.action.BYD_MAINTENANCE_OIL_FLUID" />
+                <action
+                    android:name="android.intent.action.BYD_MAINTENANCE_TIME_SWITCH" />
+                <action
+                    android:name="android.intent.action.BYD_MAINTENANCE_MILE_SWITCH" />
+                <action
+                    android:name="android.intent.action.BYD_MAINTENANCE_HEV_MILE_SWITCH" />
+                <action
+                    android:name="android.intent.action.BYD_MAINTENANCE_HEV_MILE" />
+                <action
+                    android:name="android.intent.action.BYD_LIGHT_AMBIENT" />
+                <action
+                    android:name="android.intent.action.BYD_EXTEND_MIRROR" />
+                <action
+                    android:name="android.intent.action.BYD_WELCOME_GUEST" />
+                <action
+                    android:name="android.intent.action.BYD_DRIVING_COMFORTABLE" />
+                <action
+                    android:name="android.intent.action.BYD_MEMORY" />
+                <action
+                    android:name="android.intent.action.BYD_AIRCONDITION" />
+                <action
+                    android:name="android.intent.action.BYD_DOOR_WINDOW_LOCK" />
+                <action
+                    android:name="android.intent.action.BYD_REMINDER" />
+                <action
+                    android:name="android.intent.action.BYD_HUD" />
+                <action
+                    android:name="android.intent.action.BYD_LINK" />
+                <action
+                    android:name="android.intent.action.BYD_SOUND" />
+                <action
+                    android:name="android.intent.action.BYD_CLOUD_CONTROL" />
+                <action
+                    android:name="android.intent.action.BYD_DISPLAY" />
+                <action
+                    android:name="android.intent.action.BYD_VERSION" />
+                <action
+                    android:name="android.intent.action.BYD_RESET_FACTORY" />
+                <action
+                    android:name="android.intent.action.BYD_RESET_ALL_SETTINGS" />
+                <action
+                    android:name="android.intent.action.BYD_APP" />
+                <action
+                    android:name="android.intent.action.BYD_MORE" />
+                <action
+                    android:name="android.intent.action.BYD_NEW_ENERGY_CHARGING" />
+                <action
+                    android:name="android.intent.action.BYD_NEW_ENERGY_DISCHARGING" />
+                <action
+                    android:name="android.intent.action.BYD_NEW_ENERGY_ENERGY_MANAGEMENT" />
+                <action
+                    android:name="android.intent.action.BYD_NEW_ENERGY_ENERGY_LIST" />
+                <action
+                    android:name="android.intent.action.BYD_NEW_ENERGY_ENERGY_LINE" />
+                <action
+                    android:name="android.intent.action.BYD_DIPILOT_DRIVER_ASSIST" />
+                <action
+                    android:name="android.intent.action.BYD_DIPILOT_DITRAINER" />
+                <action
+                    android:name="android.intent.action.BYD_DIPILOT_PARKING_ASSIST" />
+                <action
+                    android:name="android.intent.action.BYD_DIPILOT_SAFETY_ASSIST" />
+                <action
+                    android:name="android.intent.action.BYD_DIPILOT_LANE_ASSIST" />
+                <action
+                    android:name="android.intent.action.BYD_DIPILOT_DRIVER_MONITOR" />
+                <action
+                    android:name="android.intent.action.BYD_ADVANCED_DRIVER_ASSIST" />
+                <action
+                    android:name="android.intent.action.BYD_SEAT" />
                 <category
                     android:name="android.intent.category.DEFAULT" />
+                <category
+                    android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:theme="@style/AppThemeByd"
+            android:name="com.byd.vehiclesettings.digitalkey.nfc.view.NfcDigitalKeyActivity"
+            android:launchMode="singleTask"
+            android:configChanges="screenSize|orientation">
             <intent-filter>
                 <action
-                    android:name="android.net.wifi.PICK_WIFI_NETWORK" />
+                    android:name="android.intent.action.NFC_SETTINGS" />
                 <category
                     android:name="android.intent.category.DEFAULT" />
             </intent-filter>
+        </activity>
+        <activity
+            android:theme="@style/AppThemeByd"
+            android:name="com.byd.vehiclesettings.digitalkey.uwb.view.UwbDigitalKeyActivity"
+            android:launchMode="singleTask"
+            android:configChanges="screenSize|orientation">
+            <intent-filter>
+                <action
+                    android:name="android.intent.action.UWB_SETTINGS" />
+                <category
+                    android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:theme="@style/AppThemeByd"
+            android:name="com.byd.vehiclesettings.digitalkey.nfc.view.NfcDigitalKeySettingActivity">
+            <intent-filter>
+                <category
+                    android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:theme="@style/AppThemeByd"
+            android:name="com.byd.vehiclesettings.digitalkey.uwb.view.UwbDigitalKeySettingActivity">
+            <intent-filter>
+                <category
+                    android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:theme="@style/app_common_dialog_style"
+            android:name="com.byd.dilink.unit.view.UnitActivity"
+            android:exported="true"
+            android:launchMode="singleTask">
+            <intent-filter>
+                <action
+                    android:name="android.intent.action.BYD_UNIT" />
+                <category
+                    android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.byd.vehiclesettings.sunroof.view.SunRoofActivity"
+            android:exported="true"
+            android:launchMode="singleInstance">
+            <intent-filter>
+                <action
+                    android:name="android.intent.action.SUN_ROOF_SETTINGS" />
+                <category
+                    android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.byd.vehiclesettings.sunroof.view.SunShadeActivity"
+            android:exported="true"
+            android:launchMode="singleInstance">
+            <intent-filter>
+                <action
+                    android:name="android.intent.action.SUN_ROOF_SETTINGS" />
+                <category
+                    android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.byd.vehiclesettings.sunroof.view.SunRoofActivity2"
+            android:exported="true"
+            android:launchMode="singleInstance">
+            <intent-filter>
+                <action
+                    android:name="android.intent.action.SUN_ROOF_SETTINGS" />
+                <action
+                    android:name="android.intent.action.BYD_SUNROOF_AND_SUNSHADE" />
+                <category
+                    android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <provider
+            android:name="com.byd.carsettings.CarSettingsContentProvider"
+            android:exported="true"
+            android:authorities="com.byd.carsettings.CarSettingsContentProvider" />
+        <activity
+            android:theme="@style/CommonDialogStyle"
+            android:name="com.byd.vehiclehealth.view.OilSettingActivity"
+            android:launchMode="singleTop"
+            android:configChanges="screenSize|orientation|keyboardHidden">
+            <intent-filter>
+                <category
+                    android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:theme="@style/CommonDialogStyle"
+            android:name="com.byd.vehiclehealth.view.OilMainRecordActivity"
+            android:launchMode="singleTop"
+            android:configChanges="screenSize|orientation|keyboardHidden">
+            <intent-filter>
+                <category
+                    android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:theme="@style/DipilotDialogStyle"
+            android:name="com.byd.dipilot.view.LaneAssist">
+            <intent-filter>
+                <action
+                    android:name="android.byd.action.LANE_ASSIST" />
+                <category
+                    android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:theme="@style/DipilotDialogStyle"
+            android:name="com.byd.dipilot.view.BlindSpotAssist">
+            <intent-filter>
+                <action
+                    android:name="android.byd.action.BLIND_SPOT_ASSIST" />
+                <category
+                    android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:theme="@style/DipilotDialogStyle"
+            android:name="com.byd.dipilot.view.DriverMonitor"
+            android:launchMode="singleTop">
+            <intent-filter>
+                <action
+                    android:name="android.byd.action.DRIVER_MONITOR" />
+                <category
+                    android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:theme="@style/DipilotDialogStyle"
+            android:name="com.byd.dipilot.view.TrafficSignSpotSystem">
+            <intent-filter>
+                <action
+                    android:name="android.byd.action.TRAFFIC_SIGN_SPOT_SYSTEM" />
+                <category
+                    android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:theme="@style/NewenergyDialogStyle"
+            android:name="com.byd.newenergy.activity.ChargingTimerActivity">
+            <intent-filter>
+                <action
+                    android:name="android.byd.action.CHARGING_TIMER" />
+                <category
+                    android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:theme="@style/NewenergyDialogStyle"
+            android:name="com.byd.newenergy.activity.DischargeLimitDialogActivity" />
+        <activity
+            android:name="com.byd.newenergy.activity.mps.MpsActivity"
+            android:launchMode="singleTop" />
+        <activity
+            android:theme="@style/NewenergyDialogStyle"
+            android:name="com.byd.newenergy.activity.mps.MpsDetailActivity" />
+        <activity
+            android:theme="@style/CommonDialogStyleSeat"
+            android:name="com.byd.vehiclesettings.view.SeatMassageActivity"
+            android:launchMode="singleInstance">
+            <intent-filter>
+                <action
+                    android:name="android.byd.action.SEAT_MASSAGE" />
+                <category
+                    android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:theme="@style/CommonDialogStyleSeat"
+            android:name="com.byd.vehiclesettings.view.SeatCopilotActivity"
+            android:launchMode="singleTop" />
+        <activity
+            android:theme="@style/CommonDialogStyleSeat"
+            android:name="com.byd.vehiclesettings.view.SeatMainActivity"
+            android:launchMode="singleTop" />
+        <activity
+            android:theme="@style/CommonDialogStyle"
+            android:name="com.byd.vehiclesettings.customdialog.SmartBroadcast"
+            android:launchMode="singleTask">
+            <intent-filter>
+                <action
+                    android:name="android.intent.action.BYD_REMINDER_SMART_BROADCAST_SETTINGS" />
+                <action
+                    android:name="android.intent.action.BYD_REMINDER_SMART_BROADCAST_SETTINGS_CLOSE" />
+                <category
+                    android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:theme="@style/CommonDialogStyle"
+            android:name="com.byd.vehiclesettings.view.DynamicColorsModeActivity"
+            android:launchMode="singleTop"
+            android:configChanges="screenSize|orientation|keyboardHidden">
+            <intent-filter>
+                <action
+                    android:name="android.intent.action.BYD_DYNAMIC_COLORS_MODE_UI" />
+                <category
+                    android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:theme="@style/CommonDialogStyle"
+            android:name="com.byd.vehiclesettings.view.MusicRhythmModeActivity"
+            android:launchMode="singleTop"
+            android:configChanges="screenSize|orientation|keyboardHidden">
+            <intent-filter>
+                <action
+                    android:name="android.intent.action.BYD_MUSIC_RHYTHM_MODE_UI" />
+                <category
+                    android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.byd.vehiclesettings.skycurtain.SkyCurtainActivity"
+            android:exported="true"
+            android:launchMode="singleInstance">
+            <intent-filter>
+                <action
+                    android:name="android.intent.action.SKY_CURTAIN_SETTINGS" />
+                <category
+                    android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:theme="@style/CommonDialogStyle"
+            android:name="com.byd.dilink.view.EQActivity"
+            android:launchMode="singleTop"
+            android:configChanges="screenSize|orientation|keyboardHidden">
+            <intent-filter>
+                <action
+                    android:name="android.intent.action.BYD_EQUALIZER" />
+                <category
+                    android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:theme="@style/CommonDialogStyle"
+            android:name="com.byd.dilink.view.SoundFieldActivity"
+            android:launchMode="singleTop"
+            android:configChanges="screenSize|orientation|keyboardHidden">
+            <intent-filter>
+                <action
+                    android:name="android.intent.action.BYD_SOUNDFIELD_BALANCE" />
+                <category
+                    android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:theme="@style/CommonDialogStyle"
+            android:name="com.byd.dilink.view.DynAudioSoundfieldFocusActivity"
+            android:launchMode="singleTop"
+            android:configChanges="screenSize|orientation|keyboardHidden">
+            <intent-filter>
+                <action
+                    android:name="android.intent.action.BYD_DYNAUDIO_SOUNDFIELD_FOCUS" />
+                <category
+                    android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:theme="@style/CommonDialogStyle"
+            android:name="com.byd.dilink.view.DynAudioSoundCharacteristicsActivity"
+            android:launchMode="singleTop"
+            android:configChanges="screenSize|orientation|keyboardHidden">
+            <intent-filter>
+                <action
+                    android:name="android.intent.action.BYD_DYNAUDIO_SOUND_FEATURES" />
+                <category
+                    android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:theme="@style/CommonDialogStyle"
+            android:name="com.byd.dilink.view.HarmanSoundfieldActivity"
+            android:launchMode="singleTop"
+            android:configChanges="screenSize|orientation|keyboardHidden">
+            <intent-filter>
+                <action
+                    android:name="android.intent.action.BYD_HARMAN_SOUNDFIELD_FOCUS" />
+                <category
+                    android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:theme="@style/CommonDialogStyle"
+            android:name="com.byd.dilink.view.HarmanEQActivity"
+            android:launchMode="singleTop"
+            android:configChanges="screenSize|orientation|keyboardHidden">
+            <intent-filter>
+                <action
+                    android:name="android.intent.action.BYD_HARMAN_EQ" />
+                <category
+                    android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+    </application>
+</manifest>
         </activity>
         <activity
             android:theme="@style/CommonDialogStyle"
