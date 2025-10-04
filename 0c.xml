@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This is a modified version of AXMLPrinter2(By Google) library. Check out how many changes are made at https://github.com/developer-krushna/AXMLPrinter by (@developer-krushna) -->
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:tag="layout/popup_pip_app_select_layout_0"
+    android:background="@drawable/popup_setup_left_radio_item_grey_bg"
+    android:padding="@7f0701c1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@id/rv_app_list_layout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/bottom_layout"
+        app:layout_constraintTop_toTopOf="0" />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:id="@id/bottom_layout"
+        android:paddingTop="@7f0701c1"
+        android:layout_width="match_parent"
+        android:layout_height="@7f07011d"
+        app:layout_constraintBottom_toBottomOf="0">
+        <Button
+            android:id="@id/clear_app_btn"
+            android:background="@drawable/btn_common_selector"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="退出"
+            android:layout_weight="1.0" />
+        <Space
+            android:layout_width="@7f0701c1"
+            android:layout_height="match_parent" />
+        <CheckBox
+            android:theme="@style/CheckBox"
+            android:gravity="center_vertical"
+            android:id="@id/start_app_check_btn"
+            android:background="@drawable/btn_common_selector"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="自启"
+            android:layout_weight="1.4"
+            app:layout_constraintBottom_toBottomOf="0"
+            app:layout_constraintEnd_toEndOf="0"
+            app:layout_constraintTop_toTopOf="0" />
+        <Space
+            android:layout_width="@7f0701c1"
+            android:layout_height="match_parent" />
+        <CheckBox
+            android:theme="@style/CheckBox"
+            android:gravity="center_vertical"
+            android:id="@id/flash_app_check_btn"
+            android:background="@drawable/btn_common_selector"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="强制"
+            android:layout_weight="1.4"
+            app:layout_constraintBottom_toBottomOf="0"
+            app:layout_constraintEnd_toEndOf="0"
+            app:layout_constraintTop_toTopOf="0" />
+        <Space
+            android:layout_width="@7f0701c1"
+            android:layout_height="match_parent" />
+        <Button
+            android:id="@id/setup_app_btn"
+            android:background="@drawable/btn_common_selector"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="设置"
+            android:layout_weight="1.0" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
