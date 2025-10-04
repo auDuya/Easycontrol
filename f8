@@ -1,0 +1,97 @@
+//
+// Decompiled by Jadx (Fallback) - 51
+
+// By developer-krushna (https://github.com/developer-krushna/)
+
+package g8;
+
+import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.util.SparseIntArray;
+import android.view.View;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.databinding.ViewDataBinding;
+import androidx.databinding.ViewDataBinding.i;
+import androidx.databinding.f;
+import c.a;
+import com.smg.dydesktop.entity.CarInfoEntity;
+
+public class f8 extends e8 {
+    public static final i C = null;
+    public static final SparseIntArray D = null;
+    public final ConstraintLayout A;
+    public long B;
+
+    public f8(f fVar, View view) {
+        this(fVar, view, ViewDataBinding.L(fVar, view, 1, C, D));
+    }
+
+    public f8(f fVar, View view, Object[] objArr) {
+        super(fVar, view, 0);
+        this.B = -1;
+        ConstraintLayout constraintLayout = (ConstraintLayout) objArr[0];
+        this.A = constraintLayout;
+        constraintLayout.setTag(null);
+        S(view);
+        I();
+    }
+
+    public boolean G() {
+        synchronized (this) {
+            if (this.B != 0) {
+                return true;
+            }
+            return false;
+        }
+    }
+
+    public void I() {
+        synchronized (this) {
+            this.B = 2;
+        }
+        O();
+    }
+
+    public void U(CarInfoEntity carInfoEntity) {
+        this.z = carInfoEntity;
+        synchronized (this) {
+            this.B |= 1;
+        }
+        n(1);
+        super.O();
+    }
+
+    public void v() {
+        long j;
+        Drawable b;
+        synchronized (this) {
+            j = this.B;
+            this.B = 0;
+        }
+        CarInfoEntity carInfoEntity = this.z;
+        int i = ((j & 3) > 0 ? 1 : ((j & 3) == 0 ? 0 : -1));
+        if (i != 0) {
+            Context context;
+            boolean isUiMode = carInfoEntity != null ? carInfoEntity.isUiMode() : false;
+            if (i != 0) {
+                j |= isUiMode ? 8 : 4;
+            }
+            if (isUiMode) {
+                context = this.A.getContext();
+                i = 2131231117;
+            } else {
+                context = this.A.getContext();
+                i = 2131231118;
+            }
+            b = a.b(context, i);
+        } else {
+            b = null;
+        }
+        if ((j & 3) != 0) {
+            m0.f.a(this.A, b);
+        }
+    }
+}
+
+// By developer-krushna (https://github.com/developer-krushna/)
+
