@@ -1,0 +1,807 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This is a modified version of AXMLPrinter2(By Google) library. Check out how many changes are made at https://github.com/developer-krushna/AXMLPrinter by (@developer-krushna) -->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    android:versionCode="2022053320"
+    android:versionName="4.04.002.20250122_3.5"
+    android:installLocation="internalOnly"
+    android:compileSdkVersion="30"
+    android:compileSdkVersionCodename="11"
+    package="com.icoolme.android.weather.bydauto"
+    platformBuildVersionCode="30"
+    platformBuildVersionName="11">
+    <uses-sdk
+        android:minSdkVersion="19"
+        android:targetSdkVersion="29" />
+    <!-- Restart other apps -->
+    <uses-permission android:name="android.permission.RESTART_PACKAGES" />
+    <!-- Read low-level system log files -->
+    <uses-permission android:name="android.permission.READ_LOGS" />
+    <!-- View network connections -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!-- Modify system settings -->
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <!-- Retrieve information about currently running apps -->
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <!-- Boot startup -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <!-- Read the contents of your shared storage space -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <!-- Allows an application to be notified when the user has unlocked the device and is present to interact with it. -->
+    <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
+    <!-- ⚠️ Allows an app to read the user's system settings. -->
+    <uses-permission android:name="android.permission.READ_SETTINGS" />
+    <!-- ⚠️ Read phone status and identity -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <!-- Have full internet access -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- Access Wi-Fi network state information -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <!-- Connect to or disconnect from Wi-Fi -->
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <!-- Change network connectivity status -->
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <!-- Modify or delete the contents of your shared storage space -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <!-- Allows an application to access approximate location (network-based). -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <!-- Access precise location -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <!-- Access extra location provider commands -->
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+    <!-- Control vibration -->
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <!-- Prevent the phone from going to sleep -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <!-- Disable keyguard lock -->
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
+    <!-- This app can appear on top of other apps -->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <permission
+        android:name="android.permission.WRITE_APN_SETTINGS" />
+    <uses-permission android:name="getui.permission.GetuiService.com.icoolme.android.weather.bydauto" />
+    <permission
+        android:name="getui.permission.GetuiService.com.icoolme.android.weather.bydauto"
+        android:protectionLevel="normal" />
+    <!-- Pair with Bluetooth devices -->
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <!-- Access Bluetooth settings -->
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <!-- Install shortcut. -->
+    <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" />
+    <!-- Find accounts on the device -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <!-- Allows an application to act as an AccountAuthenticator for the AccountManager. -->
+    <uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS" />
+    <!-- Manage the list of accounts in the AccountManager -->
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
+    <permission
+        android:name="com.icoolme.android.weather.bydauto.push.permission.MESSAGE"
+        android:protectionLevel="signature" />
+    <permission
+        android:name="com.icoolme.android.weather.bydauto.permission.C2D_MESSAGE"
+        android:protectionLevel="signature" />
+    <permission
+        android:name="com.icoolme.android.weather.bydauto.permission.MIPUSH_RECEIVE"
+        android:protectionLevel="signatureOrSystem" />
+    <uses-permission android:name="com.icoolme.android.weather.bydauto.permission.MIPUSH_RECEIVE" />
+    <uses-permission android:name="com.icoolme.android.weather.bydauto.push.permission.MESSAGE" />
+    <uses-permission android:name="com.icoolme.android.weather.bydauto.permission.C2D_MESSAGE" />
+    <uses-permission android:name="com.meizu.flyme.push.permission.RECEIVER" />
+    <uses-permission android:name="com.meizu.c2dm.permission.RECEIVER" />
+    <uses-permission android:name="android.permission.BROADCAST_PACKAGE_ADDED" />
+    <uses-permission android:name="android.permission.BROADCAST_PACKAGE_CHANGED" />
+    <uses-permission android:name="android.permission.BROADCAST_PACKAGE_INSTALL" />
+    <uses-permission android:name="android.permission.BROADCAST_PACKAGE_REPLACED" />
+    <uses-permission android:name="android.permission.BROADCAST_RESTART_PACKAGE" />
+    <!-- Allows the app to retrieve a list of real tasks (processes and activities), including background tasks. -->
+    <uses-permission android:name="android.permission.REAL_GET_TASKS" />
+    <permission
+        android:label="Allow read content provider"
+        android:name="com.icoolme.android.weather.bydauto.READ_CONTENTPROVIDER"
+        android:protectionLevel="normal" />
+    <uses-permission android:name="com.meizu.c2dm.permission.RECEIVE" />
+    <uses-permission android:name="com.icoolme.android.weather.bydauto.permission.C2D_MESSAGE" />
+    <uses-permission android:name="com.icoolme.android.weather.bydauto.permission.MIPUSH_RECEIVE" />
+    <!-- Allows an app to remove tasks. -->
+    <uses-permission android:name="android.permission.REMOVE_TASKS" />
+    <!-- Install packages -->
+    <uses-permission android:name="android.permission.INSTALL_PACKAGES" />
+    <uses-permission android:name="android.permission.STOP_APP_SWITCHES" />
+    <!-- Run foreground service. -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <!-- Allows an application to access location in the background (Android 10+). -->
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+    <application
+        android:theme="@style/ApplicationTheme"
+        android:label="@string/app_name"
+        android:icon="@7f070546"
+        android:name="com.icoolme.android.weather.WeatherApplication"
+        android:allowBackup="false"
+        android:largeHeap="true"
+        android:supportsRtl="true"
+        android:usesCleartextTraffic="true"
+        android:resizeableActivity="false"
+        android:appComponentFactory="android.support.v4.app.CoreComponentFactory"
+        android:requestLegacyExternalStorage="true">
+        <meta-data
+            android:name="UMENG_CHANNEL"
+            android:value="1016" />
+        <meta-data
+            android:name="com.amap.api.v2.apikey"
+            android:value="235dac744c8f9c4fec89749b0057ed7d" />
+        <activity
+            android:theme="@style/Theme.BaseWeather"
+            android:name="com.icoolme.android.weather.activity.CityAdd"
+            android:exported="false"
+            android:windowSoftInputMode="adjustNothing">
+            <intent-filter>
+                <action
+                    android:name="com.icoolme.android.weather.action.AddCity" />
+                <category
+                    android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <meta-data
+            android:name="PUSH_APPID"
+            android:value="e2Jpt6j9Ln8UXiRfpMF997" />
+        <meta-data
+            android:name="PUSH_APPKEY"
+            android:value="u082JOqvae8jGjK06Hkq5A" />
+        <meta-data
+            android:name="PUSH_APPSECRET"
+            android:value="hfzUGhAAH165lmSfIwhw52" />
+        <meta-data
+            android:name="JPUSH_CHANNEL"
+            android:value="developer-default" />
+        <meta-data
+            android:name="JPUSH_APPKEY"
+            android:value="4a9af63a5e8d1cbc368a9289" />
+        <meta-data
+            android:name="MEIZUPUSH_APPID"
+            android:value="MZ_110364" />
+        <meta-data
+            android:name="MEIZUPUSH_APPKEY"
+            android:value="MZ_69af39c2af224903b0c8298afeb7f132" />
+        <meta-data
+            android:name="com.huawei.hms.client.appid"
+            android:value="10149704" />
+        <meta-data
+            android:name="MIPUSH_APPID"
+            android:value="XM_2882303761517158308" />
+        <meta-data
+            android:name="MIPUSH_APPKEY"
+            android:value="XM_5621715832308" />
+        <meta-data
+            android:name="XIAOMI_APPID"
+            android:value="MI-2882303761517158308" />
+        <meta-data
+            android:name="XIAOMI_APPKEY"
+            android:value="MI-5621715832308" />
+        <meta-data
+            android:name="MEIZU_APPKEY"
+            android:value="MZ-69af39c2af224903b0c8298afeb7f132" />
+        <meta-data
+            android:name="MEIZU_APPID"
+            android:value="MZ-110364" />
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false" />
+        <meta-data
+            android:name="android.max_aspect"
+            android:value="2.5" />
+        <activity
+            android:theme="@style/Theme.Splash"
+            android:name="com.icoolme.android.weather.activity.SmartWeatherActivity"
+            android:screenOrientation="sensor">
+            <intent-filter>
+                <action
+                    android:name="com.icoolme.android.weather.action.HomeActivity" />
+                <action
+                    android:name="com.icoolme.android.weather.action.SplashActivity" />
+                <action
+                    android:name="android.intent.action.MAIN" />
+                <category
+                    android:name="android.intent.category.LAUNCHER" />
+                <category
+                    android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter>
+                <action
+                    android:name="android.intent.action.VIEW" />
+                <category
+                    android:name="android.intent.category.DEFAULT" />
+                <category
+                    android:name="android.intent.category.BROWSABLE" />
+                <data
+                    android:scheme="zmw"
+                    android:host="MainActivity" />
+            </intent-filter>
+        </activity>
+        <activity-alias
+            android:name="com.coolwind.weather.SplashActivity"
+            android:targetActivity="com.icoolme.android.weather.activity.SmartWeatherActivity">
+            <intent-filter>
+                <action
+                    android:name="android.intent.action.VIEW" />
+                <action
+                    android:name="android.intent.action.MAIN" />
+                <category
+                    android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity-alias>
+        <activity-alias
+            android:name="com.freeme.weather.ui.WeatherActivity"
+            android:targetActivity="com.icoolme.android.weather.activity.SmartWeatherActivity">
+            <intent-filter>
+                <action
+                    android:name="android.intent.action.MAIN" />
+                <category
+                    android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity-alias>
+        <activity
+            android:theme="@style/Theme.BaseWeather"
+            android:label="@string/app_name"
+            android:name="com.icoolme.android.weather.activity.MainWeatherActivity"
+            android:launchMode="singleTask"
+            android:configChanges="layoutDirection|smallestScreenSize|screenSize|screenLayout|orientation|keyboardHidden|keyboard|locale"
+            android:hardwareAccelerated="true">
+            <intent-filter>
+                <action
+                    android:name="com.icoolme.android.weather.action.reminder" />
+                <action
+                    android:name="com.icoolme.android.weather.action.launcher" />
+                <category
+                    android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:theme="@style/Theme.Actual.Transparent"
+            android:name="com.icoolme.android.weather.activity.WeatherActualActivity" />
+        <activity
+            android:theme="@style/Theme.BaseWeather"
+            android:name="com.icoolme.android.weather.activity.WeatherActualNewActivity" />
+        <activity
+            android:theme="@style/Theme.Actual.Transparent"
+            android:name="com.icoolme.android.weather.activity.WeatherRadarActivity" />
+        <activity
+            android:theme="@style/Theme.BaseWeather"
+            android:name="com.icoolme.android.weather.activity.CityManagerEx"
+            android:configChanges="layoutDirection|smallestScreenSize|screenSize|screenLayout|orientation|keyboardHidden|keyboard|locale" />
+        <activity
+            android:theme="@style/Theme.BaseWeather"
+            android:name="com.icoolme.android.weather.activity.CitySettingActivity" />
+        <activity
+            android:theme="@style/Theme.BaseWeather"
+            android:name="com.icoolme.android.weather.activity.WeatherCorrectionActivity" />
+        <activity
+            android:theme="@style/Theme.BaseWeather"
+            android:name="com.icoolme.android.weather.activity.WeatherCorrectionDisplayActivity" />
+        <activity
+            android:theme="@style/Theme.BaseWeather"
+            android:name="com.icoolme.android.weather.imagescan.ImageScanActivity" />
+        <activity
+            android:theme="@style/Theme.BaseWeather"
+            android:name="com.icoolme.android.weather.activity.SettingActivity"
+            android:configChanges="layoutDirection|smallestScreenSize|screenSize|screenLayout|orientation|keyboardHidden|keyboard|locale"
+            android:hardwareAccelerated="true" />
+        <activity
+            android:theme="@style/Theme.BaseWeather"
+            android:name="com.icoolme.android.weather.activity.SettingAlarmActivity" />
+        <activity
+            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"
+            android:name="com.icoolme.android.weather.activity.WeatherRemindActivity"
+            android:launchMode="singleInstance">
+            <intent-filter>
+                <action
+                    android:name="com.icoolme.android.weather.action.WeatherRemindActivity" />
+                <category
+                    android:name="android.intent.category.LAUNCHER" />
+                <category
+                    android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"
+            android:name="com.icoolme.android.weather.activity.TtsAlarmActivity"
+            android:launchMode="singleInstance">
+            <intent-filter>
+                <action
+                    android:name="com.icoolme.android.weather.action.TtsAlarmActivity" />
+                <category
+                    android:name="android.intent.category.LAUNCHER" />
+                <category
+                    android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:theme="@style/Theme.CustomDialog"
+            android:name="com.icoolme.android.weather.activity.TtsAlarmDialogActivity"
+            android:launchMode="singleInstance">
+            <intent-filter>
+                <action
+                    android:name="com.icoolme.android.weather.action.TtsAlarmDialogActivity" />
+                <category
+                    android:name="android.intent.category.LAUNCHER" />
+                <category
+                    android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:theme="@style/Theme.BaseWeather"
+            android:name="com.icoolme.android.weather.activity.SettingAlarmCreateActivity" />
+        <activity
+            android:theme="@style/Theme.CustomDialog"
+            android:name="com.icoolme.android.weather.activity.SettingWebActivity" />
+        <activity
+            android:theme="@style/Theme.BaseWeather"
+            android:name="com.icoolme.android.weather.activity.PureWebviewActivity">
+            <intent-filter>
+                <action
+                    android:name="com.icoolme.android.weather.action.PureWebviewActivity" />
+                <category
+                    android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:theme="@style/Theme.BaseWeather"
+            android:name="com.icoolme.android.weather.activity.PmWebActivity" />
+        <activity
+            android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen"
+            android:name="com.icoolme.android.weather.activity.AroundWebActivity" />
+        <activity
+            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"
+            android:name="com.icoolme.android.weather.activity.BackdoorActivity" />
+        <activity
+            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"
+            android:name="com.icoolme.android.weather.activity.BackdoorTuopanActivity" />
+        <activity
+            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"
+            android:name="com.icoolme.android.weather.activity.BackdoorCorrActivity" />
+        <activity
+            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"
+            android:name="com.icoolme.android.weather.activity.BackdoorReminderActivity" />
+        <activity
+            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"
+            android:name="com.icoolme.android.weather.activity.BackdoorInputAddressActivity" />
+        <activity
+            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"
+            android:name="com.icoolme.android.weather.activity.BackdoorInputChannelActivity" />
+        <activity
+            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"
+            android:name="com.icoolme.android.weather.activity.BackdoorInputSubversionActivity" />
+        <activity
+            android:theme="@style/Theme.BaseWeather"
+            android:name="com.icoolme.android.weather.activity.SettingTuopanActivity">
+            <intent-filter>
+                <action
+                    android:name="com.icoolme.android.weather.action.SetttingTuopanActivity" />
+                <category
+                    android:name="android.intent.category.LAUNCHER" />
+                <category
+                    android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:theme="@style/Theme.BaseWeather"
+            android:name="com.icoolme.android.weather.activity.SettingTuopanColorActivity" />
+        <activity
+            android:theme="@style/Theme.BaseWeather"
+            android:name="com.icoolme.android.weather.activity.SettingWarningActivity" />
+        <activity
+            android:theme="@style/Theme.BaseWeather"
+            android:name="com.icoolme.android.weather.activity.WarningActivity">
+            <intent-filter>
+                <action
+                    android:name="com.icoolme.android.weather.action.WarningActivity" />
+                <category
+                    android:name="android.intent.category.LAUNCHER" />
+                <category
+                    android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:theme="@style/Theme.BaseWeather"
+            android:name="com.icoolme.android.weather.activity.WeatherEventWebActivity">
+            <intent-filter>
+                <action
+                    android:name="com.icoolme.android.weather.action.WeatherEventWeb" />
+                <category
+                    android:name="android.intent.category.LAUNCHER" />
+                <category
+                    android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:theme="@style/Theme.BaseWeather"
+            android:name="com.icoolme.android.weather.activity.WeatherNotificationListActivity">
+            <intent-filter>
+                <action
+                    android:name="com.icoolme.android.weather.action.WeatherNotificationListActivity" />
+                <category
+                    android:name="android.intent.category.LAUNCHER" />
+                <category
+                    android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:theme="@style/Theme.BaseWeather"
+            android:name="com.icoolme.android.weather.activity.SettingUpdateActivity" />
+        <activity
+            android:theme="@style/Theme.BaseWeather"
+            android:name="com.icoolme.android.weather.activity.SettingNoticeActivity" />
+        <activity
+            android:theme="@style/Theme.BaseWeather"
+            android:name="com.icoolme.android.weather.activity.SettingVersionActivity" />
+        <activity
+            android:theme="@style/Theme.BaseWeather"
+            android:name="com.icoolme.android.weather.activity.NotifyCityActivity" />
+        <activity
+            android:theme="@style/Theme.BaseWeather"
+            android:name="com.icoolme.android.weather.activity.PmActivity">
+            <intent-filter>
+                <action
+                    android:name="com.icoolme.android.weather.action.SHOW_PM" />
+                <category
+                    android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:theme="@style/Theme.BaseWeather"
+            android:name="com.icoolme.android.weather.activity.FAQActivity" />
+        <activity
+            android:theme="@style/Theme.BaseWeather"
+            android:name="com.icoolme.android.weather.activity.TermsActivity" />
+        <activity
+            android:theme="@style/Theme.BaseWeather"
+            android:name="com.icoolme.android.weather.activity.PmRankActivity"
+            android:configChanges="uiMode" />
+        <activity
+            android:theme="@style/Theme.BaseWeather"
+            android:name="com.icoolme.android.weather.activity.AboutActivity" />
+        <activity
+            android:theme="@style/Theme.BaseWeather"
+            android:name="com.icoolme.android.weather.activity.LifeProposalActivity" />
+        <activity
+            android:theme="@style/Theme.CustomDialog"
+            android:name="com.icoolme.android.weather.activity.ShareActivity"
+            android:configChanges="layoutDirection|orientation|keyboardHidden|keyboard|locale">
+            <intent-filter>
+                <action
+                    android:name="com.icoolme.android.weather.action.SHARE_ACTIVITY" />
+                <category
+                    android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter>
+                <action
+                    android:name="android.intent.action.VIEW" />
+                <category
+                    android:name="android.intent.category.DEFAULT" />
+                <category
+                    android:name="android.intent.category.BROWSABLE" />
+                <data
+                    android:scheme="zmw"
+                    android:host="ShareActivity" />
+            </intent-filter>
+        </activity>
+        <meta-data
+            android:name="WEIBO_APPKEY"
+            android:value="1483577782" />
+        <meta-data
+            android:name="WEIBO_CHANNEL"
+            android:value="weibo" />
+        <activity
+            android:theme="@style/Theme.BaseWeather"
+            android:name="com.icoolme.android.weather.feedback.FeedbackActivity"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:theme="@style/Theme.BaseWeather"
+            android:name="com.icoolme.android.weather.feedback.FeedbackMainActivity" />
+        <provider
+            android:name="com.icoolme.android.weather.provider.ExternalProvider"
+            android:exported="true"
+            android:multiprocess="true"
+            android:authorities="com.icoolme.android.weather.bydauto.ExternalProvider" />
+        <provider
+            android:name="com.icoolme.android.common.provider.CityProvider"
+            android:exported="true"
+            android:multiprocess="true"
+            android:authorities="com.icoolme.android.weather.bydauto.cityprovider" />
+        <receiver
+            android:name="com.icoolme.android.weather.receiver.AutoUpdateReceiver">
+            <intent-filter android:priority="100000">
+                <action
+                    android:name="com.aicoolme.android.weather.updateweather" />
+                <action
+                    android:name="android.icoolme.intent.action.GET_CITY_LIST_DATA" />
+                <action
+                    android:name="android.icoolme.intent.action.AUTOUPDATE_WEATHER" />
+                <action
+                    android:name="com.aicoolme.android.weather.updatesetting" />
+                <action
+                    android:name="android.icoolme.intent.action.LOCATION_FINISH" />
+                <action
+                    android:name="com.icoolme.net.conn.CONNECTIVITY_CHANGE" />
+                <action
+                    android:name="android.intent.action.BOOT_COMPLETED" />
+                <action
+                    android:name="yulong.intent.action.STATUS_BAR_EXPAND_VIEW_UPDATE_ICON" />
+                <action
+                    android:name="android.icoolme.intent.action.GET_WEATHER_DATA" />
+                <action
+                    android:name="android.icoolme.intent.action.GET_SELECT_WEATHER_DATA" />
+                <action
+                    android:name="android.intent.action.CONFIGURATION_CHANGED" />
+                <action
+                    android:name="android.intent.action.DATE_CHANGED" />
+                <action
+                    android:name="android.intent.action.TIME_SET" />
+                <action
+                    android:name="android.icoolme.intent.action.GET_EXPONENT" />
+                <action
+                    android:name="android.icoolme.intent.action.GET_FEATURE_WEATHER_DATA" />
+                <action
+                    android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+                <action
+                    android:name="com.icoolme.android.weather.action.REQUEST_WIDGET_BACKGROUND" />
+                <action
+                    android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+                <action
+                    android:name="com.icoolme.android.weather.TEST_OPEN" />
+                <action
+                    android:name="com.icoolme.android.weather.TEST_CLOSE" />
+                <action
+                    android:name="android.intent.action.LOCALE_CHANGED" />
+                <action
+                    android:name="com.icoolme.android.weather.SCREEN_ON" />
+                <action
+                    android:name="com.icoolme.android.weather.ALARM1" />
+                <action
+                    android:name="com.icoolme.android.weather.ALARM2" />
+                <action
+                    android:name="com.icoolme.android.weather.ALARM3" />
+                <action
+                    android:name="android.intent.action.TIMEZONE_CHANGED" />
+                <action
+                    android:name="com.qiku.account.LOGOUT" />
+                <action
+                    android:name="com.icoolme.android.weater.ALARM_TEST" />
+                <action
+                    android:name="com.icoolme.android.BEST_WEATHER_WARNING_BROADCAST" />
+            </intent-filter>
+            <intent-filter>
+                <action
+                    android:name="android.intent.action.PACKAGE_ADDED" />
+                <data android:scheme="package" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="com.icoolme.android.weather.receiver.ReminderReceiver">
+            <intent-filter>
+                <action
+                    android:name="com.icoolme.android.weather.REMIND" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="com.icoolme.android.weather.receiver.ReminderNightReceiver">
+            <intent-filter>
+                <action
+                    android:name="com.icoolme.android.weather.REMIND_NIGHT" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="com.icoolme.android.weather.widget.WeatherWidgetAlarmReceiver" />
+        <service
+            android:name="com.icoolme.android.weather.widget.WeatherWidgetService"
+            android:process=":widget"
+            android:foregroundServiceType="location" />
+        <service
+            android:name="com.icoolme.android.weather.service.WeatherInfoRequestService"
+            android:exported="true"
+            android:process=":widget">
+            <intent-filter>
+                <action
+                    android:name="com.icoolme.android.weather.GET_WEATHER" />
+            </intent-filter>
+        </service>
+        <service
+            android:name="com.icoolme.android.weather.service.KeeperService"
+            android:exported="true"
+            android:process=":widget">
+            <intent-filter>
+                <action
+                    android:name="com.icoolme.android.weather.action.KEEPER" />
+            </intent-filter>
+        </service>
+        <receiver
+            android:label="@string/app_name"
+            android:icon="@7f070546"
+            android:name="com.icoolme.android.weather.widget.WeatherBydWidgetProvider"
+            android:enabled="true"
+            android:process=":widget">
+            <intent-filter>
+                <action
+                    android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/weather_appwidget_byd_car" />
+        </receiver>
+        <receiver
+            android:label="@string/app_name"
+            android:icon="@7f070546"
+            android:name="com.icoolme.android.weather.widget.byddolphin.WeatherBydWidgetProvider"
+            android:enabled="true"
+            android:process=":widget">
+            <intent-filter>
+                <action
+                    android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/weather_appwidget_byd_dolphin_car" />
+        </receiver>
+        <receiver
+            android:name="com.icoolme.android.weather.widget.WidgetBroadCastReceiver"
+            android:process=":widget">
+            <intent-filter>
+                <action
+                    android:name="WallpaperBrightness" />
+                <action
+                    android:name="android.intent.action.TIME_SET" />
+                <action
+                    android:name="android.intent.action.DATE_CHANGED" />
+                <action
+                    android:name="android.intent.action.TIMEZONE_CHANGED" />
+                <action
+                    android:name="android.intent.action.MEDIA_MOUNTED" />
+                <action
+                    android:name="android.intent.action.LOCALE_CHANGED" />
+                <action
+                    android:name="android.intent.action.THEME_CHANGED" />
+                <action
+                    android:name="com.icoolme.android.weather.LAUNCHER_SERVICE" />
+                <action
+                    android:name="android.intent.action.USER_PRESENT" />
+                <action
+                    android:name="android.intent.action.ACTION_POWER_CONNECTED" />
+                <action
+                    android:name="android.intent.action.ACTION_POWER_DISCONNECTED" />
+                <action
+                    android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+                <action
+                    android:name="android.intent.action.CONFIGURATION_CHANGED" />
+                <action
+                    android:name="com.igexin.sdk.action.refreshls" />
+                <action
+                    android:name="com.igexin.sdk.action.pushmanager" />
+            </intent-filter>
+            <intent-filter>
+                <action
+                    android:name="android.intent.action.PACKAGE_ADDED" />
+                <data android:scheme="package" />
+            </intent-filter>
+        </receiver>
+        <activity
+            android:theme="@android:style/Theme.Translucent"
+            android:name="com.icoolme.android.weather.bydauto.wxapi.WXEntryActivity"
+            android:exported="true"
+            android:launchMode="singleInstance" />
+        <activity
+            android:theme="@style/Theme.BaseWeather"
+            android:name="com.icoolme.android.weather.activity.HistoryWeatherActivity"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:theme="@style/Theme.BaseWeather"
+            android:name="com.icoolme.android.weather.activity.ExpManageActivity"
+            android:launchMode="singleTask" />
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="538eb02c56240be207055fdd" />
+        <meta-data
+            android:name="com.droi.sdk.application_id"
+            android:value="cc9smbzhqOtH9yrPnRK-26UDjKyJMcKklQDMOOsA" />
+        <activity
+            android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen"
+            android:name="com.icoolme.android.weather.activity.WeatherForecastListActivity" />
+        <meta-data
+            android:name="PIKEY"
+            android:value="zuimeitianqi" />
+        <meta-data
+            android:name="KEYO"
+            android:value="beaff1252b6e3c52afc18bbc03ffd476" />
+        <meta-data
+            android:name="KEYT"
+            android:value="106f9a9f388d8fe8bccc13f3c924987957c3cae2" />
+        <meta-data
+            android:name="APPDATA_APPID"
+            android:value="1010015" />
+        <meta-data
+            android:name="APPDATA_APPKEY"
+            android:value="3506bf491c2e4bb3850ef7fb6ec42c94" />
+        <meta-data
+            android:name="APPDATA_CHANNEL"
+            android:value="weather_zuimei" />
+        <service
+            android:name="com.amap.api.location.APSService" />
+        <activity
+            android:theme="@style/Theme.BaseWeather"
+            android:name="com.icoolme.android.weather.activity.SettingAddressActivity"
+            android:launchMode="singleTask"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:theme="@style/Theme.BaseWeather"
+            android:name="com.icoolme.android.weather.activity.RainMapActivity" />
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:exported="false"
+            android:authorities="com.icoolme.android.weather.bydauto.fileprovider"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
+        <activity
+            android:theme="@style/Theme.UpdateModule"
+            android:name="com.icoolme.android.weatheradvert.activity.PureWebviewActivity"
+            android:screenOrientation="portrait" />
+        <provider
+            android:name="com.icoolme.android.weatheradvert.provider.ADDbProvider"
+            android:multiprocess="true"
+            android:authorities="com.icoolme.android.weather.bydauto.weatheradvert.provider" />
+        <receiver
+            android:name="com.icoolme.android.weatheradvert.update.UpgradeReceiver">
+            <intent-filter>
+                <action
+                    android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+            </intent-filter>
+        </receiver>
+        <activity
+            android:theme="@style/Theme.UserModule"
+            android:name="com.icoolme.android.user.login.LoginActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:theme="@style/Theme.UserModule"
+            android:name="com.icoolme.android.user.profile.ProfileActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:theme="@style/Theme.UserModule"
+            android:name="com.icoolme.android.user.base.WebViewActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.tencent.tauth.AuthActivity"
+            android:launchMode="singleTask"
+            android:noHistory="true">
+            <intent-filter>
+                <action
+                    android:name="android.intent.action.VIEW" />
+                <category
+                    android:name="android.intent.category.DEFAULT" />
+                <category
+                    android:name="android.intent.category.BROWSABLE" />
+                <data
+                    android:scheme="tencent100814994.data" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:name="com.tencent.connect.common.AssistActivity"
+            android:screenOrientation="behind"
+            android:configChanges="orientation|keyboardHidden" />
+        <provider
+            android:name="com.icoolme.android.common.provider.DbProvider"
+            android:exported="true"
+            android:multiprocess="true"
+            android:authorities="com.icoolme.android.weather.bydauto.provider" />
+        <provider
+            android:name="com.noober.background.BackgroundContentProvider"
+            android:exported="false"
+            android:multiprocess="true"
+            android:authorities="com.icoolme.android.weather.bydauto.backgroundLibrary" />
+        <activity
+            android:theme="@style/EasyPermissions.Transparent"
+            android:label=""
+            android:name="pub.devrel.easypermissions.AppSettingsDialogHolderActivity"
+            android:exported="false" />
+    </application>
+</manifest>
