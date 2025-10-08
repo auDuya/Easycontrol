@@ -69,7 +69,7 @@
 
     iget-object v0, p0, Le8/o;->a:Landroid/hardware/bydauto/statistic/BYDAutoStatisticDevice;
 
-    invoke-virtual {v0}, Landroid/hardware/bydauto/statistic/BYDAutoStatisticDevice;->getTotalFuelConValue()D
+    invoke-virtual {v0}, Landroid/hardware/bydauto/statistic/BYDAutoStatisticDevice;->getTotalFuelConValue()D //油消耗总量
 
     move-result-wide v0
 
@@ -82,7 +82,7 @@
 
     iget-object v0, p0, Le8/o;->a:Landroid/hardware/bydauto/statistic/BYDAutoStatisticDevice;
 
-    invoke-virtual {v0}, Landroid/hardware/bydauto/statistic/BYDAutoStatisticDevice;->getTotalElecConValue()D
+    invoke-virtual {v0}, Landroid/hardware/bydauto/statistic/BYDAutoStatisticDevice;->getTotalElecConValue()D //电消耗总量
 
     move-result-wide v0
 
@@ -93,7 +93,7 @@
 
     iget-object p3, p0, Le8/o;->a:Landroid/hardware/bydauto/statistic/BYDAutoStatisticDevice;
 
-    invoke-virtual {p3}, Landroid/hardware/bydauto/statistic/BYDAutoStatisticDevice;->getTotalMileageValue()I
+    invoke-virtual {p3}, Landroid/hardware/bydauto/statistic/BYDAutoStatisticDevice;->getTotalMileageValue()I //总里程
 
     move-result p3
 
@@ -106,7 +106,7 @@
 
     iget-object v0, p0, Le8/o;->a:Landroid/hardware/bydauto/statistic/BYDAutoStatisticDevice;
 
-    invoke-virtual {v0}, Landroid/hardware/bydauto/statistic/BYDAutoStatisticDevice;->getLastFuelConPHMValue()D
+    invoke-virtual {v0}, Landroid/hardware/bydauto/statistic/BYDAutoStatisticDevice;->getLastFuelConPHMValue()D  //百公里油耗
 
     move-result-wide v0
 
@@ -122,7 +122,7 @@
 
     iget-object p3, p0, Le8/o;->a:Landroid/hardware/bydauto/statistic/BYDAutoStatisticDevice;
 
-    invoke-virtual {p3}, Landroid/hardware/bydauto/statistic/BYDAutoStatisticDevice;->getLastElecConPHMValue()D
+    invoke-virtual {p3}, Landroid/hardware/bydauto/statistic/BYDAutoStatisticDevice;->getLastElecConPHMValue()D  //百公里电耗
 
     move-result-wide v0
 
@@ -137,7 +137,7 @@
 
     iget-object p3, p0, Le8/o;->a:Landroid/hardware/bydauto/statistic/BYDAutoStatisticDevice;
 
-    invoke-virtual {p3}, Landroid/hardware/bydauto/statistic/BYDAutoStatisticDevice;->getFuelPercentageValue()I
+    invoke-virtual {p3}, Landroid/hardware/bydauto/statistic/BYDAutoStatisticDevice;->getFuelPercentageValue()I //燃油百分比
 
     move-result p3
 
@@ -146,7 +146,7 @@
     :pswitch_4c  #0x448
     iget-object p2, p0, Le8/o;->a:Landroid/hardware/bydauto/statistic/BYDAutoStatisticDevice;
 
-    invoke-virtual {p2}, Landroid/hardware/bydauto/statistic/BYDAutoStatisticDevice;->getElecPercentageValue()D
+    invoke-virtual {p2}, Landroid/hardware/bydauto/statistic/BYDAutoStatisticDevice;->getElecPercentageValue()D //电量百分比
 
     move-result-wide p2
 
@@ -165,13 +165,13 @@
     :pswitch_5d  #0x447
     iget-object p2, p0, Le8/o;->a:Landroid/hardware/bydauto/statistic/BYDAutoStatisticDevice;
 
-    invoke-virtual {p2}, Landroid/hardware/bydauto/statistic/BYDAutoStatisticDevice;->getFuelPercentageValue()I
+    invoke-virtual {p2}, Landroid/hardware/bydauto/statistic/BYDAutoStatisticDevice;->getFuelPercentageValue()I  //燃油百分比
 
     move-result p2
 
     iget-object p3, p0, Le8/o;->a:Landroid/hardware/bydauto/statistic/BYDAutoStatisticDevice;
 
-    invoke-virtual {p3}, Landroid/hardware/bydauto/statistic/BYDAutoStatisticDevice;->getFuelDrivingRangeValue()I
+    invoke-virtual {p3}, Landroid/hardware/bydauto/statistic/BYDAutoStatisticDevice;->getFuelDrivingRangeValue()I  //油续航里程
 
     move-result p3
 
@@ -205,7 +205,7 @@
 
     iget-object p3, p0, Le8/o;->a:Landroid/hardware/bydauto/statistic/BYDAutoStatisticDevice;
 
-    invoke-virtual {p3}, Landroid/hardware/bydauto/statistic/BYDAutoStatisticDevice;->getElecDrivingRangeValue()I
+    invoke-virtual {p3}, Landroid/hardware/bydauto/statistic/BYDAutoStatisticDevice;->getElecDrivingRangeValue()I // 电续航里程
 
     move-result p3
 
@@ -252,7 +252,7 @@
 .method public onDrivingTimeChanged(D)V
     .registers 3
 
-    invoke-super {p0, p1, p2}, Landroid/hardware/bydauto/statistic/AbsBYDAutoStatisticListener;->onDrivingTimeChanged(D)V
+    invoke-super {p0, p1, p2}, Landroid/hardware/bydauto/statistic/AbsBYDAutoStatisticListener;->onDrivingTimeChanged(D)V //监听 行驶时间
 
     return-void
 .end method
