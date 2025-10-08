@@ -51,11 +51,11 @@ public class o extends AbsBYDAutoStatisticListener {
         switch (i) {
             case 1094:
                 rVar = this.b;
-                elecDrivingRangeValue = this.a.getElecDrivingRangeValue();
+                elecDrivingRangeValue = this.a.getElecDrivingRangeValue(); // 电续航里程
                 break;
             case 1095:
-                i2 = this.a.getFuelPercentageValue();
-                elecDrivingRangeValue = this.a.getFuelDrivingRangeValue();
+                i2 = this.a.getFuelPercentageValue();  // 燃油百分比
+                elecDrivingRangeValue = this.a.getFuelDrivingRangeValue(); //油续航里程
                 r rVar2 = this.b;
                 String str2 = "--";
                 if (i2 > 5) {
@@ -66,39 +66,39 @@ public class o extends AbsBYDAutoStatisticListener {
                 rVar2.d(i, str2);
                 return;
             case 1096:
-                this.b.d(i, String.valueOf((int) this.a.getElecPercentageValue()));
+                this.b.d(i, String.valueOf((int) this.a.getElecPercentageValue())); //电续航里程
                 return;
             case 1097:
                 rVar = this.b;
-                elecDrivingRangeValue = this.a.getFuelPercentageValue();
+                elecDrivingRangeValue = this.a.getFuelPercentageValue(); //燃油百分比
                 break;
             case 1098:
                 rVar = this.b;
-                str = String.valueOf(this.a.getLastElecConPHMValue());
+                str = String.valueOf(this.a.getLastElecConPHMValue());  //百公里电耗
                 break;
             case 1099:
                 rVar = this.b;
                 decimalFormat = this.c;
-                lastFuelConPHMValue = this.a.getLastFuelConPHMValue();
+                lastFuelConPHMValue = this.a.getLastFuelConPHMValue(); //百公里油耗
                 break;
             default:
                 switch (i) {
                     case 1114:
                     case 1115:
                         rVar = this.b;
-                        elecDrivingRangeValue = this.a.getTotalMileageValue();
+                        elecDrivingRangeValue = this.a.getTotalMileageValue(); //总里程
                         break;
                     case 1116:
                     case 1117:
                         rVar = this.b;
                         decimalFormat = this.c;
-                        lastFuelConPHMValue = this.a.getTotalElecConValue();
+                        lastFuelConPHMValue = this.a.getTotalElecConValue(); //电消耗总量
                         break;
                     case 1118:
                     case 1119:
                         rVar = this.b;
                         decimalFormat = this.c;
-                        lastFuelConPHMValue = this.a.getTotalFuelConValue();
+                        lastFuelConPHMValue = this.a.getTotalFuelConValue(); //油消耗总量
                         break;
                     default:
                         return;
@@ -109,50 +109,50 @@ public class o extends AbsBYDAutoStatisticListener {
     public void onDataEventChanged(int i, BYDAutoEventValue bYDAutoEventValue) {
     }
 
-    public void onDrivingTimeChanged(double d) {
+    public void onDrivingTimeChanged(double d) {           //监听 行驶时间变化
         super.onDrivingTimeChanged(d);
     }
 
-    public void onElecDrivingRangeChanged(int i) {
+    public void onElecDrivingRangeChanged(int i) {         //监听 电续航里程
         this.b.d(1094, String.valueOf(i));
     }
 
-    public void onElecPercentageChanged(double d) {
+    public void onElecPercentageChanged(double d) {        //监听 电量百分比
         this.b.d(1096, String.valueOf((int) d));
     }
 
-    public void onError(int i, String str) {
+    public void onError(int i, String str) {               
     }
 
-    public void onFuelDrivingRangeChanged(int i) {
+    public void onFuelDrivingRangeChanged(int i) {         //监听 燃油续航里程
         this.b.d(1095, String.valueOf(i));
     }
 
-    public void onFuelPercentageChanged(int i) {
+    public void onFuelPercentageChanged(int i) {           //监听 燃油百分比
         this.b.d(1097, String.valueOf(i));
     }
 
-    public void onLastElecConPHMChanged(double d) {
+    public void onLastElecConPHMChanged(double d) {        //监听 百公里电耗
         this.b.d(1098, String.valueOf(d));
     }
 
-    public void onLastFuelConPHMChanged(double d) {
+    public void onLastFuelConPHMChanged(double d) {          //监听 百公里油耗
         this.b.d(1099, new DecimalFormat("0.0").format(d));
     }
 
-    public void onTotalElecConChanged(double d) {
+    public void onTotalElecConChanged(double d) {              //监听 电消耗总量
         this.b.d(1116, this.c.format(this.a.getTotalElecConValue()));
     }
 
-    public void onTotalFuelConChanged(double d) {
+    public void onTotalFuelConChanged(double d) {             //监听 油消耗总量
         this.b.d(1118, this.c.format(this.a.getTotalFuelConValue()));
     }
 
-    public void onTotalMileageValueChanged(int i) {
+    public void onTotalMileageValueChanged(int i) {           //监听 总里程
         this.b.d(1114, String.valueOf(this.a.getTotalMileageValue()));
     }
 
-    public void onTravelTimeChanged(int i, double d) {
+    public void onTravelTimeChanged(int i, double d) {       //行驶时间
         super.onTravelTimeChanged(i, d);
     }
 }
