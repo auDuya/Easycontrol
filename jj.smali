@@ -243,13 +243,13 @@
     .end packed-switch
 .end method
 
-.method public onDataEventChanged(ILandroid/hardware/bydauto/BYDAutoEventValue;)V
+.method public onDataEventChanged(ILandroid/hardware/bydauto/BYDAutoEventValue;)V 
     .registers 3
 
     return-void
 .end method
 
-.method public onDrivingTimeChanged(D)V
+.method public onDrivingTimeChanged(D)V //监听 行驶时间变化 
     .registers 3
 
     invoke-super {p0, p1, p2}, Landroid/hardware/bydauto/statistic/AbsBYDAutoStatisticListener;->onDrivingTimeChanged(D)V //监听 行驶时间
@@ -257,7 +257,7 @@
     return-void
 .end method
 
-.method public onElecDrivingRangeChanged(I)V
+.method public onElecDrivingRangeChanged(I)V //监听 电续航里程
     .registers 4
 
     iget-object v0, p0, Le8/o;->b:Le8/r;
@@ -273,7 +273,7 @@
     return-void
 .end method
 
-.method public onElecPercentageChanged(D)V
+.method public onElecPercentageChanged(D)V   //监听 电量百分比
     .registers 4
 
     double-to-int p1, p1
@@ -291,13 +291,13 @@
     return-void
 .end method
 
-.method public onError(ILjava/lang/String;)V
+.method public onError(ILjava/lang/String;)V   
     .registers 3
 
     return-void
 .end method
 
-.method public onFuelDrivingRangeChanged(I)V
+.method public onFuelDrivingRangeChanged(I)V  //监听 燃油续航里程
     .registers 4
 
     iget-object v0, p0, Le8/o;->b:Le8/r;
@@ -313,7 +313,7 @@
     return-void
 .end method
 
-.method public onFuelPercentageChanged(I)V
+.method public onFuelPercentageChanged(I)V  //监听 燃油百分比
     .registers 4
 
     iget-object v0, p0, Le8/o;->b:Le8/r;
@@ -329,7 +329,7 @@
     return-void
 .end method
 
-.method public onLastElecConPHMChanged(D)V
+.method public onLastElecConPHMChanged(D)V  //监听 百公里电耗
     .registers 5
 
     iget-object v0, p0, Le8/o;->b:Le8/r;
@@ -345,7 +345,7 @@
     return-void
 .end method
 
-.method public onLastFuelConPHMChanged(D)V
+.method public onLastFuelConPHMChanged(D)V  //监听 百公里油耗
     .registers 5
 
     new-instance v0, Ljava/text/DecimalFormat;
@@ -367,7 +367,7 @@
     return-void
 .end method
 
-.method public onTotalElecConChanged(D)V
+.method public onTotalElecConChanged(D)V  //监听 电消耗总量
     .registers 5
 
     iget-object p1, p0, Le8/o;->b:Le8/r;
@@ -391,7 +391,7 @@
     return-void
 .end method
 
-.method public onTotalFuelConChanged(D)V
+.method public onTotalFuelConChanged(D)V  //监听 油消耗总量
     .registers 5
 
     iget-object p1, p0, Le8/o;->b:Le8/r;
@@ -415,7 +415,7 @@
     return-void
 .end method
 
-.method public onTotalMileageValueChanged(I)V
+.method public onTotalMileageValueChanged(I)V  //监听 总里程
     .registers 4
 
     iget-object p1, p0, Le8/o;->b:Le8/r;
@@ -437,7 +437,7 @@
     return-void
 .end method
 
-.method public onTravelTimeChanged(ID)V
+.method public onTravelTimeChanged(ID)V   //行驶时间
     .registers 4
 
     invoke-super {p0, p1, p2, p3}, Landroid/hardware/bydauto/statistic/AbsBYDAutoStatisticListener;->onTravelTimeChanged(ID)V
