@@ -109,7 +109,7 @@ public class o extends AbsBYDAutoStatisticListener {
     public void onDataEventChanged(int i, BYDAutoEventValue bYDAutoEventValue) {
     }
 
-    public void onDrivingTimeChanged(double d) {           //监听 行驶时间变化
+    public void onDrivingTimeChanged(double d) {           //监听 行驶时间变化 
         super.onDrivingTimeChanged(d);
     }
 
