@@ -1,159 +1,488 @@
 //
-// Decompiled by Jadx (Fallback) - 66
+// Decompiled by Jadx (Fallback) - 82
 
 // By developer-krushna (https://github.com/developer-krushna/)
 
-package e8;
+package com.smg.dydesktop.service;
 
-import android.content.Context;
-import android.hardware.bydauto.BYDAutoEventValue;
-import android.hardware.bydauto.statistic.AbsBYDAutoStatisticListener;
-import android.hardware.bydauto.statistic.BYDAutoStatisticDevice;
-import java.text.DecimalFormat;
+import a9.k;
+import android.accessibilityservice.AccessibilityService;
+import android.content.Intent;
+import android.view.KeyEvent;
+import android.view.accessibility.AccessibilityEvent;
+import android.view.accessibility.AccessibilityNodeInfo;
+import com.smg.dydesktop.ui.base.App;
+import f9.j;
+import f9.j0;
+import f9.p;
+import j8.c0;
+import j8.l;
+import java.util.List;
+import java.util.Objects;
+import q7.a;
+import q7.b;
+import t8.m2;
 
-public class o extends AbsBYDAutoStatisticListener {
-    public final BYDAutoStatisticDevice a;
-    public r b;
-    public final DecimalFormat c = new DecimalFormat("0.0");
+public class AutoService extends AccessibilityService {
+    public static AutoService l;
+    public final String d = "com.byd.avc";
+    public AccessibilityNodeInfo e = null;
+    public boolean f = false;
+    public boolean g = false;
+    public boolean h = false;
+    public boolean i = false;
+    public boolean j = false;
+    public String k = null;
 
-    public o(r rVar, Context context) {
-        this.b = rVar;
-        BYDAutoStatisticDevice instance = BYDAutoStatisticDevice.getInstance(context);
-        this.a = instance;
-        instance.registerListener(this);
+    public static AutoService d() {
+        return l;
     }
 
-    public void a() {
-        BYDAutoStatisticDevice bYDAutoStatisticDevice = this.a;
-        if (bYDAutoStatisticDevice != null) {
-            bYDAutoStatisticDevice.unregisterListener(this);
+    public final boolean a(int i, int i2) {
+        if (i == 312 && i2 == 0) {
+            l.c().k();
+            return true;
+        } else if (i == 304 && i2 == 1 && k.h) {
+            l.c().f();
+            return true;
+        } else if (!k.h || (i2 != 0 && i2 != 1)) {
+            return false;
+        } else {
+            l.c().j();
+            if (i == 87) {
+                if (i2 == 0) {
+                    App.f(1014, 1);
+                }
+                return true;
+            } else if (i != 88) {
+                switch (i) {
+                    case 291:
+                        if (i2 == 0) {
+                            App.f(1007, 1);
+                        }
+                        return true;
+                    case 292:
+                        if (i2 == 0) {
+                            App.f(1007, 0);
+                        }
+                        return true;
+                    case 293:
+                        if (i2 == 0) {
+                            App.f(1012, -1);
+                        }
+                        return true;
+                    default:
+                        return false;
+                }
+            } else {
+                if (i2 == 0) {
+                    App.f(1014, 0);
+                }
+                return true;
+            }
         }
     }
 
-    /* JADX WARNING: Missing block: B:7:0x0031, code:
-            r6 = r6.format(r0);
-     */
-    /* JADX WARNING: Missing block: B:19:0x0085, code:
-            r6 = java.lang.String.valueOf(r6);
-     */
-    /* JADX WARNING: Missing block: B:20:0x0089, code:
-            r5.d(r4, r6);
-     */
-    /* JADX WARNING: Missing block: B:21:?, code:
-            return;
+    public final boolean b(int i, int i2) {
+        if (i2 != 0) {
+            if (i2 != 1) {
+                return false;
+            }
+        }
+        if (i == 87) {
+            if (i2 == 0) {
+                m();
+            }
+            return true;
+        } else if (i != 88) {
+            switch (i) {
+                case 291:
+                    if (i2 == 0) {
+                        n();
+                    }
+                    return true;
+                case 292:
+                    if (i2 == 0) {
+                        c();
+                    }
+                    return true;
+                case 293:
+                    if (i2 == 0) {
+                        h();
+                    }
+                    return true;
+                default:
+                    return false;
+            }
+        } else {
+            if (i2 == 0) {
+                f();
+            }
+            return true;
+        }
+    }
+
+    /* JADX WARNING: Missing block: B:12:0x0031, code:
+            if (r1.isSelected() == false) goto L_0x0033;
      */
     /* Code decompiled incorrectly, please refer to instructions dump. */
-    public void b(int i, int i2, String str) {
-        r rVar;
-        int elecDrivingRangeValue;
-        DecimalFormat decimalFormat;
-        double lastFuelConPHMValue;
-        switch (i) {
-            case 1094:
-                rVar = this.b;
-                elecDrivingRangeValue = this.a.getElecDrivingRangeValue(); // 电续航里程
-                break;
-            case 1095:
-                i2 = this.a.getFuelPercentageValue();  // 燃油百分比
-                elecDrivingRangeValue = this.a.getFuelDrivingRangeValue(); //油续航里程
-                r rVar2 = this.b;
-                String str2 = "--";
-                if (i2 > 5) {
-                    if (elecDrivingRangeValue != 2046) {
-                        str2 = String.valueOf(elecDrivingRangeValue);
+    public final void c() {
+        try {
+            AccessibilityNodeInfo accessibilityNodeInfo = this.e;
+            if (accessibilityNodeInfo != null) {
+                List findAccessibilityNodeInfosByViewId;
+                if (this.j) {
+                    findAccessibilityNodeInfosByViewId = accessibilityNodeInfo.findAccessibilityNodeInfosByViewId("com.byd.avc:id/hc_back_3d_button");
+                    if (findAccessibilityNodeInfosByViewId.isEmpty()) {
+                        j0.c(App.c().getString(2131689674));
+                        return;
+                    }
+                    accessibilityNodeInfo = (AccessibilityNodeInfo) findAccessibilityNodeInfosByViewId.get(0);
+                } else {
+                    findAccessibilityNodeInfosByViewId = accessibilityNodeInfo.findAccessibilityNodeInfosByViewId("com.byd.avc:id/hc_back_2d_button");
+                    List findAccessibilityNodeInfosByViewId2 = this.e.findAccessibilityNodeInfosByViewId("com.byd.avc:id/hc_back_wide_2d_button");
+                    if (!findAccessibilityNodeInfosByViewId.isEmpty()) {
+                        this.h = ((AccessibilityNodeInfo) findAccessibilityNodeInfosByViewId.get(0)).isSelected();
+                    }
+                    if (!findAccessibilityNodeInfosByViewId2.isEmpty()) {
+                        this.i = ((AccessibilityNodeInfo) findAccessibilityNodeInfosByViewId2.get(0)).isSelected();
+                    }
+                    if (!(this.h || this.i)) {
+                        if (findAccessibilityNodeInfosByViewId.isEmpty()) {
+                            j0.c(App.c().getString(2131689674));
+                            return;
+                        }
+                        AccessibilityNodeInfo accessibilityNodeInfo2 = (AccessibilityNodeInfo) findAccessibilityNodeInfosByViewId.get(0);
+                        if (!accessibilityNodeInfo2.isSelected()) {
+                            accessibilityNodeInfo2.performAction(16);
+                        }
+                    }
+                    if (this.h) {
+                        if (findAccessibilityNodeInfosByViewId2.isEmpty()) {
+                            j0.c(App.c().getString(2131689674));
+                            return;
+                        }
+                        AccessibilityNodeInfo accessibilityNodeInfo3 = (AccessibilityNodeInfo) findAccessibilityNodeInfosByViewId2.get(0);
+                        if (!accessibilityNodeInfo3.isSelected()) {
+                            accessibilityNodeInfo3.performAction(16);
+                        }
+                    }
+                    if (this.i) {
+                        if (findAccessibilityNodeInfosByViewId.isEmpty()) {
+                            j0.c(App.c().getString(2131689674));
+                            return;
+                        } else {
+                            accessibilityNodeInfo = (AccessibilityNodeInfo) findAccessibilityNodeInfosByViewId.get(0);
+                            if (!accessibilityNodeInfo.isSelected()) {
+                            }
+                        }
                     }
                 }
-                rVar2.d(i, str2);
-                return;
-            case 1096:
-                this.b.d(i, String.valueOf((int) this.a.getElecPercentageValue())); //电续航里程
-                return;
-            case 1097:
-                rVar = this.b;
-                elecDrivingRangeValue = this.a.getFuelPercentageValue(); //燃油百分比
-                break;
-            case 1098:
-                rVar = this.b;
-                str = String.valueOf(this.a.getLastElecConPHMValue());  //百公里电耗
-                break;
-            case 1099:
-                rVar = this.b;
-                decimalFormat = this.c;
-                lastFuelConPHMValue = this.a.getLastFuelConPHMValue(); //百公里油耗
-                break;
-            default:
-                switch (i) {
-                    case 1114:
-                    case 1115:
-                        rVar = this.b;
-                        elecDrivingRangeValue = this.a.getTotalMileageValue(); //总里程
-                        break;
-                    case 1116:
-                    case 1117:
-                        rVar = this.b;
-                        decimalFormat = this.c;
-                        lastFuelConPHMValue = this.a.getTotalElecConValue(); //电消耗总量
-                        break;
-                    case 1118:
-                    case 1119:
-                        rVar = this.b;
-                        decimalFormat = this.c;
-                        lastFuelConPHMValue = this.a.getTotalFuelConValue(); //油消耗总量
-                        break;
-                    default:
-                        return;
-                }
+                accessibilityNodeInfo.performAction(16);
+            }
+        } catch (Exception unused) {
+            j0.c(App.c().getString(2131689674));
         }
     }
 
-    public void onDataEventChanged(int i, BYDAutoEventValue bYDAutoEventValue) {
+    public final void e(AccessibilityEvent accessibilityEvent) {
+        if (accessibilityEvent.getSource() != null && accessibilityEvent.getEventType() == 32) {
+            String charSequence = accessibilityEvent.getPackageName().toString();
+            k.g = charSequence;
+            if ("com.byd.avc".equals(charSequence)) {
+                this.e = getRootInActiveWindow();
+                c0.n().q();
+            }
+            if (!Objects.equals(this.k, charSequence) && !"com.android.systemui".equals(charSequence)) {
+                this.k = charSequence;
+                String str = "RX_BUS_CONTROL_HIDE_STATUS_BAR";
+                if (p.a("KEY_STATUS_BAR_STATE")) {
+                    if (k.t.contains(charSequence)) {
+                        b.a().h(str, charSequence);
+                    } else {
+                        b.a().h("RX_BUS_CONTROL_SHOW_STATUS_BAR", charSequence);
+                    }
+                }
+                String str2 = "RX_BUS_CONTROL_HIDE_NAV_BAR";
+                if (p.a("KEY_NAVIGATION_BAR_STATE")) {
+                    if (k.u.contains(charSequence)) {
+                        b.a().h(str2, charSequence);
+                    } else {
+                        b.a().h("RX_BUS_CONTROL_SHOW_NAV_BAR", charSequence);
+                    }
+                }
+                if ("com.byd.screensaver".equals(charSequence)) {
+                    b.a().h(str, charSequence);
+                    b.a().h(str2, charSequence);
+                }
+            }
+        }
     }
 
-    public void onDrivingTimeChanged(double d) {           //监听 行驶时间变化 
-        super.onDrivingTimeChanged(d);
+    /* JADX WARNING: Missing block: B:12:0x0031, code:
+            if (r1.isSelected() == false) goto L_0x0033;
+     */
+    /* Code decompiled incorrectly, please refer to instructions dump. */
+    public final void f() {
+        try {
+            AccessibilityNodeInfo accessibilityNodeInfo = this.e;
+            if (accessibilityNodeInfo != null) {
+                List findAccessibilityNodeInfosByViewId;
+                if (this.j) {
+                    findAccessibilityNodeInfosByViewId = accessibilityNodeInfo.findAccessibilityNodeInfosByViewId("com.byd.avc:id/hc_left_back_3d_button");
+                    if (findAccessibilityNodeInfosByViewId.isEmpty()) {
+                        j0.c(App.c().getString(2131689674));
+                        return;
+                    }
+                    accessibilityNodeInfo = (AccessibilityNodeInfo) findAccessibilityNodeInfosByViewId.get(0);
+                } else {
+                    findAccessibilityNodeInfosByViewId = accessibilityNodeInfo.findAccessibilityNodeInfosByViewId("com.byd.avc:id/hc_left_2d_button");
+                    if (findAccessibilityNodeInfosByViewId.isEmpty()) {
+                        j0.c(App.c().getString(2131689674));
+                        return;
+                    }
+                    accessibilityNodeInfo = (AccessibilityNodeInfo) findAccessibilityNodeInfosByViewId.get(0);
+                    if (!accessibilityNodeInfo.isSelected()) {
+                    }
+                }
+                accessibilityNodeInfo.performAction(16);
+            }
+        } catch (Exception unused) {
+            j0.c(App.c().getString(2131689674));
+        }
     }
 
-    public void onElecDrivingRangeChanged(int i) {         //监听 电续航里程
-        this.b.d(1094, String.valueOf(i));
+    public final boolean g(int i, int i2) {
+        if (i2 == 0) {
+            a a;
+            Object obj;
+            String str = "RX_BUS_LOCAL_MUSIC_PLAY_CURRENT_CHANGED";
+            if (i == 87) {
+                a = b.a();
+                obj = "3";
+            } else if (i == 88) {
+                a = b.a();
+                obj = "1";
+            } else if (i == 293) {
+                a = b.a();
+                obj = "2";
+            }
+            a.h(str, obj);
+            return true;
+        }
+        return false;
     }
 
-    public void onElecPercentageChanged(double d) {        //监听 电量百分比
-        this.b.d(1096, String.valueOf((int) d));
+    public final void h() {
+        try {
+            AccessibilityNodeInfo accessibilityNodeInfo = this.e;
+            if (accessibilityNodeInfo != null) {
+                List findAccessibilityNodeInfosByViewId = accessibilityNodeInfo.findAccessibilityNodeInfosByViewId("com.byd.avc:id/hc_3d_type_switch_button");
+                if (findAccessibilityNodeInfosByViewId.isEmpty()) {
+                    j0.c(App.c().getString(2131689674));
+                    return;
+                }
+                accessibilityNodeInfo = (AccessibilityNodeInfo) findAccessibilityNodeInfosByViewId.get(0);
+                boolean isSelected = accessibilityNodeInfo.isSelected();
+                this.j = isSelected;
+                if (isSelected) {
+                    accessibilityNodeInfo.performAction(16);
+                    this.j = false;
+                } else {
+                    accessibilityNodeInfo.performAction(16);
+                    this.j = true;
+                }
+            }
+        } catch (Exception unused) {
+            j0.c(App.c().getString(2131689674));
+        }
     }
 
-    public void onError(int i, String str) {               
+    public void i() {
+        performGlobalAction(1);
     }
 
-    public void onFuelDrivingRangeChanged(int i) {         //监听 燃油续航里程
-        this.b.d(1095, String.valueOf(i));
+    public void j() {
+        performGlobalAction(2);
     }
 
-    public void onFuelPercentageChanged(int i) {           //监听 燃油百分比
-        this.b.d(1097, String.valueOf(i));
+    public void k() {
+        performGlobalAction(7);
     }
 
-    public void onLastElecConPHMChanged(double d) {        //监听 百公里电耗
-        this.b.d(1098, String.valueOf(d));
+    public void l() {
+        performGlobalAction(3);
     }
 
-    public void onLastFuelConPHMChanged(double d) {          //监听 百公里油耗
-        this.b.d(1099, new DecimalFormat("0.0").format(d));
+    /* JADX WARNING: Missing block: B:12:0x0031, code:
+            if (r1.isSelected() == false) goto L_0x0033;
+     */
+    /* Code decompiled incorrectly, please refer to instructions dump. */
+    public final void m() {
+        try {
+            AccessibilityNodeInfo accessibilityNodeInfo = this.e;
+            if (accessibilityNodeInfo != null) {
+                List findAccessibilityNodeInfosByViewId;
+                if (this.j) {
+                    findAccessibilityNodeInfosByViewId = accessibilityNodeInfo.findAccessibilityNodeInfosByViewId("com.byd.avc:id/hc_right_back_3d_button");
+                    if (findAccessibilityNodeInfosByViewId.isEmpty()) {
+                        j0.c(App.c().getString(2131689674));
+                        return;
+                    }
+                    accessibilityNodeInfo = (AccessibilityNodeInfo) findAccessibilityNodeInfosByViewId.get(0);
+                } else {
+                    findAccessibilityNodeInfosByViewId = accessibilityNodeInfo.findAccessibilityNodeInfosByViewId("com.byd.avc:id/hc_right_2d_button");
+                    if (findAccessibilityNodeInfosByViewId.isEmpty()) {
+                        j0.c(App.c().getString(2131689674));
+                        return;
+                    }
+                    accessibilityNodeInfo = (AccessibilityNodeInfo) findAccessibilityNodeInfosByViewId.get(0);
+                    if (!accessibilityNodeInfo.isSelected()) {
+                    }
+                }
+                accessibilityNodeInfo.performAction(16);
+            }
+        } catch (Exception unused) {
+            j0.c(App.c().getString(2131689674));
+        }
     }
 
-    public void onTotalElecConChanged(double d) {              //监听 电消耗总量
-        this.b.d(1116, this.c.format(this.a.getTotalElecConValue()));
+    /* JADX WARNING: Missing block: B:12:0x0034, code:
+            if (r1.isSelected() == false) goto L_0x0036;
+     */
+    /* Code decompiled incorrectly, please refer to instructions dump. */
+    public final void n() {
+        try {
+            AccessibilityNodeInfo accessibilityNodeInfo = this.e;
+            if (accessibilityNodeInfo != null) {
+                List findAccessibilityNodeInfosByViewId;
+                if (this.j) {
+                    findAccessibilityNodeInfosByViewId = accessibilityNodeInfo.findAccessibilityNodeInfosByViewId("com.byd.avc:id/hc_front_3d_button");
+                    if (findAccessibilityNodeInfosByViewId.isEmpty()) {
+                        j0.c(App.c().getString(2131689696));
+                        return;
+                    }
+                    accessibilityNodeInfo = (AccessibilityNodeInfo) findAccessibilityNodeInfosByViewId.get(0);
+                } else {
+                    findAccessibilityNodeInfosByViewId = accessibilityNodeInfo.findAccessibilityNodeInfosByViewId("com.byd.avc:id/hc_front_2d_button");
+                    List findAccessibilityNodeInfosByViewId2 = this.e.findAccessibilityNodeInfosByViewId("com.byd.avc:id/hc_front_wide_2d_button");
+                    if (!findAccessibilityNodeInfosByViewId.isEmpty()) {
+                        this.f = ((AccessibilityNodeInfo) findAccessibilityNodeInfosByViewId.get(0)).isSelected();
+                    }
+                    if (!findAccessibilityNodeInfosByViewId2.isEmpty()) {
+                        this.g = ((AccessibilityNodeInfo) findAccessibilityNodeInfosByViewId2.get(0)).isSelected();
+                    }
+                    if (!(this.f || this.g)) {
+                        if (findAccessibilityNodeInfosByViewId.isEmpty()) {
+                            j0.c(App.c().getString(2131689674));
+                            return;
+                        }
+                        AccessibilityNodeInfo accessibilityNodeInfo2 = (AccessibilityNodeInfo) findAccessibilityNodeInfosByViewId.get(0);
+                        if (!accessibilityNodeInfo2.isSelected()) {
+                            accessibilityNodeInfo2.performAction(16);
+                        }
+                    }
+                    if (this.f) {
+                        if (findAccessibilityNodeInfosByViewId2.isEmpty()) {
+                            j0.c(App.c().getString(2131689674));
+                            return;
+                        }
+                        AccessibilityNodeInfo accessibilityNodeInfo3 = (AccessibilityNodeInfo) findAccessibilityNodeInfosByViewId2.get(0);
+                        if (!accessibilityNodeInfo3.isSelected()) {
+                            accessibilityNodeInfo3.performAction(16);
+                        }
+                    }
+                    if (this.g) {
+                        if (findAccessibilityNodeInfosByViewId.isEmpty()) {
+                            j0.c(App.c().getString(2131689674));
+                            return;
+                        } else {
+                            accessibilityNodeInfo = (AccessibilityNodeInfo) findAccessibilityNodeInfosByViewId.get(0);
+                            if (!accessibilityNodeInfo.isSelected()) {
+                            }
+                        }
+                    }
+                }
+                accessibilityNodeInfo.performAction(16);
+            }
+        } catch (Exception unused) {
+            j0.c(App.c().getString(2131689674));
+        }
     }
 
-    public void onTotalFuelConChanged(double d) {             //监听 油消耗总量
-        this.b.d(1118, this.c.format(this.a.getTotalFuelConValue()));
+    public void onAccessibilityEvent(AccessibilityEvent accessibilityEvent) {
+        e(accessibilityEvent);
     }
 
-    public void onTotalMileageValueChanged(int i) {           //监听 总里程
-        this.b.d(1114, String.valueOf(this.a.getTotalMileageValue()));
+    public void onCreate() {
+        super.onCreate();
+        l = this;
     }
 
-    public void onTravelTimeChanged(int i, double d) {       //行驶时间
-        super.onTravelTimeChanged(i, d);
+    public void onDestroy() {
+        super.onDestroy();
+    }
+
+    public void onInterrupt() {
+    }
+
+    public boolean onKeyEvent(KeyEvent keyEvent) {
+        String b;
+        int keyCode = keyEvent.getKeyCode();
+        int action = keyEvent.getAction();
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("onKeyEvent: ");
+        stringBuilder.append(keyCode);
+        stringBuilder.append(" = ");
+        stringBuilder.append(action);
+        String str = "KEY_DISPLAY_APP_MOVE_INFO_LIST";
+        if (keyCode == 303 && (action == 0 || action == 1)) {
+            b = p.b(str);
+            if (!b.isEmpty()) {
+                if (action == 0) {
+                    App.e(1087, 1, j.f(b));
+                }
+                return true;
+            }
+        }
+        if (keyCode == 302 && (action == 0 || action == 1)) {
+            b = p.b(str);
+            if (!b.isEmpty()) {
+                if (action == 0) {
+                    App.e(1087, 0, j.f(b));
+                }
+                return true;
+            }
+        }
+        str = "com.byd.avc";
+        if (j.A() && ((keyCode == 88 || keyCode == 293 || keyCode == 87) && !k.h && !str.equals(this.k))) {
+            return g(keyCode, action);
+        }
+        if (!p.a("KEY_FANG_CONTROL_MUSIC_PLAYING_STATE") || k.h || str.equals(this.k) || keyCode != 293 || action != 0) {
+            return (!p.a("KEY_FANG_CONTROL_AIR_STATE") || str.equals(this.k)) ? (p.a("KEY_FANG_CONTROL_FULL_VIEW_STATE") && str.equals(this.k) && !k.h) ? b(keyCode, action) : false : a(keyCode, action);
+        } else {
+            b.a().h("RX_BUS_MUSIC_PLAY_STATE_CHANGED", "2");
+            return true;
+        }
+    }
+
+    public void onServiceConnected() {
+        super.onServiceConnected();
+        l = this;
+        b.a().i(this);
+        m2.b().c();
+        k.e.setStatusAccessibilityState(true);
+        b.a().h("RX_BUS_RELOAD_BAR", "");
+    }
+
+    public boolean onUnbind(Intent intent) {
+        l = null;
+        k.e.setStatusAccessibilityState(false);
+        String str = "";
+        b.a().h("RX_BUS_RELOAD_STATUS_ICON_INFO_STATE", str);
+        b.a().h("RX_BUS_RELOAD_BAR", str);
+        b.a().j(this);
+        return super.onUnbind(intent);
     }
 }
 
